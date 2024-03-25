@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      ferry_generator|graphql_builder:
+        enabled: true
+        options:
+          output_dir: src/ferry_graphql/__generated__
+          schema: demo_graphql|lib/schema.graphql
+          # schemas:
+          #   - demo_graphql|lib/operation.graphql
+      ferry_generator|serializer_builder:
+        enabled: true
+        options:
+          output_dir: src/ferry_graphql/__generated__
+          schema: demo_graphql|lib/schema.graphql
+          # schemas:
+          #   - demo_graphql|lib/operation.graphql
