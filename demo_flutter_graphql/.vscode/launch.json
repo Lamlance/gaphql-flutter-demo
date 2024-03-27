@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "demo_ferry_graphql",
+      "name": "demo_flutter_graphql",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "demo_ferry_graphql (profile mode)",
+      "name": "demo_flutter_graphql (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "demo_ferry_graphql (release mode)",
+      "name": "demo_flutter_graphql (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"
