@@ -11,3 +11,10 @@ mutation AddTodo($description: String!) {
     id
   }
 }
+
+mutation AddTodo($description: String!) {
+  addTodo(description: $description) {
+    description
+    id
+  }
+}
