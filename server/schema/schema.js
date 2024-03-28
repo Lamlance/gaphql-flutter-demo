@@ -32,8 +32,21 @@ var gamesData = [
     {id: '27', name: 'Mortal Kombat 11', price: 40, typeID: '10', publisherID: '17'},
     {id: '28', name: 'Horizon Zero Dawn', price: 40, typeID: '2', publisherID: '16'},
     {id: '29', name: 'Final Fantasy VII Remake', price: 60, typeID: '6', publisherID: '16'},
-    {id: '30', name: 'Splatoon 2', price: 50, typeID: '1', publisherID: '12'}
+    {id: '30', name: 'Splatoon 2', price: 50, typeID: '1', publisherID: '12'},
+    {id: '31', name: 'The Last of Us Part II', price: 60, typeID: '2', publisherID: '15'},
+    {id: '32', name: 'Far Cry 6', price: 60, typeID: '7', publisherID: '5'},
+    {id: '33', name: 'Resident Evil Village', price: 60, typeID: '11', publisherID: '17'},
+    {id: '34', name: 'Hitman 3', price: 60, typeID: '8', publisherID: '7'},
+    {id: '35', name: 'NBA 2K22', price: 60, typeID: '4', publisherID: '3'},
+    {id: '36', name: 'Assassin\'s Creed Odyssey', price: 50, typeID: '2', publisherID: '5'},
+    {id: '37', name: 'Doom Eternal', price: 50, typeID: '1', publisherID: '1'},
+    {id: '38', name: 'Farming Simulator 22', price: 40, typeID: '3', publisherID: '7'},
+    {id: '39', name: 'Resident Evil 3 Remake', price: 50, typeID: '11', publisherID: '17'},
+    {id: '40', name: 'Sekiro: Shadows Die Twice', price: 60, typeID: '2', publisherID: '12'},
+    {id: '41', name: 'Terraria', price: 10, typeID: '5', publisherID: '4'},
+    {id: '42', name:'Roblox', price: 0, typeID: '5', publisherID: '4'},
 ];
+
 
 
 var typeGamesData = [
@@ -69,58 +82,31 @@ var typeGamesData = [
     {id_type: '30', type_name: 'Idle/Incremental', description: 'Require minimal player input, with gameplay centered around incremental progress and resource management over time.'}
 ];
 
-// var reviewsData = [
-//     {id_review: '1', review: 'Great game!', rating: 5},
-//     {id_review: '2', review: 'Amazing storyline!', rating: 5},
-//     {id_review: '3', review: 'Graphics are stunning!', rating: 4},
-//     {id_review: '4', review: 'Enjoyed playing it!', rating: 4},
-//     {id_review: '5', review: 'Could be better.', rating: 3},
-//     {id_review: '6', review: 'Not bad, not great.', rating: 3},
-//     {id_review: '7', review: 'It\'s okay.', rating: 3},
-//     {id_review: '8', review: 'Disappointing.', rating: 2},
-//     {id_review: '9', review: 'Waste of money.', rating: 1},
-//     {id_review: '10', review: 'Unplayable.', rating: 1},
-//     {id_review: '11', review: 'Addictive gameplay!', rating: 5},
-//     {id_review: '12', review: 'Loved every moment of it!', rating: 5},
-//     {id_review: '13', review: 'Could use some improvements.', rating: 4},
-//     {id_review: '14', review: 'Fun multiplayer experience.', rating: 4},
-//     {id_review: '15', review: 'Not my cup of tea.', rating: 2},
-//     {id_review: '16', review: 'Expected more.', rating: 2},
-//     {id_review: '17', review: 'Wouldn\'t recommend it.', rating: 1},
-//     {id_review: '18', review: 'Best game ever!', rating: 5},
-//     {id_review: '19', review: 'A masterpiece.', rating: 5},
-//     {id_review: '20', review: 'Good value for money.', rating: 4},
-//     {id_review: '21', review: 'Great graphics!', rating: 4},
-//     {id_review: '22', review: 'Highly addictive.', rating: 5},
-//     {id_review: '23', review: 'Could be more challenging.', rating: 3},
-//     {id_review: '24', review: 'A bit repetitive.', rating: 3},
-//     {id_review: '25', review: 'Decent game.', rating: 3},
-//     {id_review: '26', review: 'Mediocre at best.', rating: 2},
-//     {id_review: '27', review: 'Not worth the hype.', rating: 2},
-//     {id_review: '28', review: 'Too short.', rating: 2},
-//     {id_review: '29', review: 'Not impressed.', rating: 1},
-//     {id_review: '30', review: 'Boring.', rating: 1}
-// ];
-
 var publishersData = [
-    {id_publisher: '1', publisher_name: 'Activision', location: 'Santa Monica, California', since: 1979},
-    {id_publisher: '2', publisher_name: 'Rockstar Games', location: 'New York City, New York', since: 1998},
-    {id_publisher: '3', publisher_name: 'Electronic Arts', location: 'Redwood City, California', since: 1982},
-    {id_publisher: '4', publisher_name: 'Mojang Studios', location: 'Stockholm, Sweden', since: 2009},
-    {id_publisher: '5', publisher_name: 'Ubisoft', location: 'Montreuil, France', since: 1986},
-    {id_publisher: '6', publisher_name: 'CD Projekt', location: 'Warsaw, Poland', since: 1994},
-    {id_publisher: '7', publisher_name: 'Blizzard Entertainment', location: 'Irvine, California', since: 1991},
-    {id_publisher: '8', publisher_name: 'Epic Games', location: 'Cary, North Carolina', since: 1991},
-    {id_publisher: '9', publisher_name: 'Psyonix', location: 'San Diego, California', since: 2001},
-    {id_publisher: '10', publisher_name: 'Riot Games', location: 'Los Angeles, California', since: 2006},
-    {id_publisher: '11', publisher_name: 'InnerSloth', location: 'Redmond, Washington', since: 2015},
-    {id_publisher: '12', publisher_name: 'Nintendo', location: 'Kyoto, Japan', since: 1889},
-    {id_publisher: '13', publisher_name: 'Kojima Productions', location: 'Tokyo, Japan', since: 2005},
-    {id_publisher: '14', publisher_name: 'Atlus', location: 'Setagaya, Tokyo, Japan', since: 1986},
-    {id_publisher: '15', publisher_name: 'Microsoft Studios', location: 'Redmond, Washington', since: 2002},
-    {id_publisher: '16', publisher_name: 'Square Enix', location: 'Shinjuku, Tokyo, Japan', since: 1986},
-    {id_publisher: '17', publisher_name: 'Warner Bros. Interactive Entertainment', location: 'Burbank, California', since: 2004}
+    { id_publisher: '1', publisher_name: 'Activision', location: 'Santa Monica, California', since: 1979, gameTypeID: ['1', '2', '3', '4', '5', '20'] },
+    { id_publisher: '2', publisher_name: 'Rockstar Games', location: 'New York City, New York', since: 1998, gameTypeID: ['2', '6', '9', '18', '28'] },
+    { id_publisher: '3', publisher_name: 'Electronic Arts', location: 'Redwood City, California', since: 1982, gameTypeID: ['4', '7', '14', '24', '25'] },
+    { id_publisher: '4', publisher_name: 'Mojang Studios', location: 'Stockholm, Sweden', since: 2009, gameTypeID: ['5'] },
+    { id_publisher: '5', publisher_name: 'Ubisoft', location: 'Montreuil, France', since: 1986, gameTypeID: ['7'] },
+    { id_publisher: '6', publisher_name: 'CD Projekt', location: 'Warsaw, Poland', since: 1994, gameTypeID: ['8', '19', '20', '29'] },
+    { id_publisher: '7', publisher_name: 'Blizzard Entertainment', location: 'Irvine, California', since: 1991, gameTypeID: ['9', '15', '27'] },
+    { id_publisher: '8', publisher_name: 'Epic Games', location: 'Cary, North Carolina', since: 1991, gameTypeID: ['10'] },
+    { id_publisher: '9', publisher_name: 'Psyonix', location: 'San Diego, California', since: 2001, gameTypeID: ['11'] },
+    { id_publisher: '10', publisher_name: 'Riot Games', location: 'Los Angeles, California', since: 2006, gameTypeID: ['12', '13'] },
+    { id_publisher: '11', publisher_name: 'InnerSloth', location: 'Redmond, Washington', since: 2015, gameTypeID: ['13'] },
+    { id_publisher: '12', publisher_name: 'Nintendo', location: 'Kyoto, Japan', since: 1889, gameTypeID: ['16', '17', '23', '30'] },
+    { id_publisher: '13', publisher_name: 'Kojima Productions', location: 'Tokyo, Japan', since: 2005, gameTypeID: ['18'] },
+    { id_publisher: '14', publisher_name: 'Atlus', location: 'Setagaya, Tokyo, Japan', since: 1986, gameTypeID: ['19'] },
+    { id_publisher: '15', publisher_name: 'Microsoft Studios', location: 'Redmond, Washington', since: 2002, gameTypeID: ['14', '21', '24', '25'] },
+    { id_publisher: '16', publisher_name: 'Square Enix', location: 'Shinjuku, Tokyo, Japan', since: 1986, gameTypeID: ['19', '29'] },
+    { id_publisher: '17', publisher_name: 'Warner Bros. Interactive Entertainment', location: 'Burbank, California', since: 2004, gameTypeID: ['27'] },
+    { id_publisher: '18', publisher_name: 'Roblox Corporation', location: 'San Mateo, California', since: 2004, gameTypeID: ['5'] },
+    { id_publisher: '19', publisher_name: 'Sony Interactive Entertainment', location: 'San Mateo, California', since: 1993, gameTypeID: ['1', '2', '14', '21'] },
+    { id_publisher: '20', publisher_name: 'Bethesda Softworks', location: 'Rockville, Maryland', since: 1986, gameTypeID: ['1', '27'] },
+    { id_publisher: '21', publisher_name: 'IO Interactive', location: 'Copenhagen, Denmark', since: 1998, gameTypeID: ['8'] },
+    { id_publisher: '22', publisher_name: 'FromSoftware', location: 'Tokyo, Japan', since: 1986, gameTypeID: ['8', '29'] }
 ];
+
 
 
 //
@@ -129,7 +115,8 @@ const {
     GraphQLID,
     GraphQLString,
     GraphQLInt, 
-    GraphQLSchema 
+    GraphQLSchema,
+    GraphQLList
 } = graphql;
 
 //Create types
@@ -162,11 +149,20 @@ const GameType = new graphql.GraphQLObjectType({
         id_type: {type: GraphQLString},
         type_name: {type: GraphQLString},
         description: {type: GraphQLString},
-        game: {
-            type: Game,
+        games:{
+            type: new GraphQLList(Game),
             resolve(parent, args){
-                return _lodash.find(gamesData, {typeID: parent.id_type});
-            }
+                return _lodash.filter(gamesData, {typeID: parent.id_type});
+            },
+        },
+
+        publishers:{
+            type: new GraphQLList(Publisher),
+            resolve(parent, args){
+                return _lodash.filter(publishersData, (publisher) => {
+                    return publisher.gameTypeID.includes(parent.id_type);
+                });
+            },
         }
     }),
 });
