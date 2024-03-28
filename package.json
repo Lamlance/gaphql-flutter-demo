@@ -4,6 +4,7 @@
   "description": "Example server for use in the Apollo docs",
   "dependencies": {
     "apollo-server": "3.4.1",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
@@ -15,7 +16,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js localhost 4000"
+    "start": "nodemon app.js localhost 4000"
   },
   "keywords": [],
   "devDependencies": {

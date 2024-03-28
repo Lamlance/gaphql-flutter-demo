@@ -135,21 +135,33 @@ const Game = new graphql.GraphQLObjectType({
         publisher:{
             type: Publisher,
             resolve(parent, args){
-                return _lodash.find(publishersData, {id: parent.publisherID});
+                return GPublisher.findById(parent.publisherID);
+                //return _lodash.find(publishersData, {id: parent.publisherID});
             }
         },
         game_type:{
             type: GameType,
             resolve(parent, args){
-                return _lodash.find(typeGamesData, {id: parent.typeID});
+                return GTypeGame.findById(parent.typeID);
+                //return _lodash.find(typeGamesData, {id: parent.typeID});
             }
         },
         game_types:{
             type: new GraphQLList(GameType),
             resolve(parent, args){
-                return _lodash.filter(typeGamesData, (typeGame) => {
-                    return parent.typeID.includes(typeGame.id);
-                });
+                return GTypeGame.find({typeID: parent.typeID})
+                // return _lodash.filter(typeGamesData, (typeGame) => {
+                //     return parent.typeID.includes(typeGame.id);
+                // });
+            }
+        },
+        publishers:{
+            type: new GraphQLList(Publisher),
+            resolve(parent, args){
+                return GPublisher.find({publisherID: parent.publisherID})
+                // return _lodash.filter(publishersData, (publisher) => {
+                //     return parent.publisherID.includes(publisher.id);
+                // });
             }
         }
     }),
@@ -165,16 +177,18 @@ const GameType = new graphql.GraphQLObjectType({
         game:{
             type: new GraphQLList(Game),
             resolve(parent, args){
-                return _lodash.filter(gamesData, {typeID: parent.id});
+                return GGame.find({typeID: parent.id});
+                //return _lodash.filter(gamesData, {typeID: parent.id});
             },
         },
 
         publisher:{
             type: new GraphQLList(Publisher),
             resolve(parent, args){
-                return _lodash.filter(publishersData, (publisher) => {
-                    return publisher.gameTypeID.includes(parent.id);
-                });
+                return GPublisher.find({gameTypeID: parent.id});
+                // return _lodash.filter(publishersData, (publisher) => {
+                //     return publisher.gameTypeID.includes(parent.id);
+                // });
             },
         }
     }),
@@ -191,15 +205,17 @@ const Publisher = new graphql.GraphQLObjectType({
         game:{
             type: new GraphQLList(Game),
             resolve(parent, args){
-                return _lodash.filter(gamesData, {publisherID: parent.id});
+                return GGame.find({publisherID: parent.id});
+               //return _lodash.filter(gamesData, {publisherID: parent.id});
             },
         },
         game_type:{
             type: new GraphQLList(GameType),
             resolve(parent, args){
-                return _lodash.filter(typeGamesData, (typeGame) => {
-                    return parent.gameTypeID.includes(typeGame.id);
-                });
+                return GTypeGame.find({gameID: parent.id});
+                // return _lodash.filter(typeGamesData, (typeGame) => {
+                //     return parent.gameTypeID.includes(typeGame.id);
+                // });
             },
         }
     }),
@@ -214,7 +230,8 @@ const RootQuery = new GraphQLObjectType({
             type: Game,
             args: {id: {type: GraphQLString}},
             resolve(parent, args){
-                return _lodash.find(gamesData, {id: args.id});
+                return GGame.findById(args.id);
+                //return _lodash.find(gamesData, {id: args.id});
             }
         },
 
@@ -228,7 +245,8 @@ const RootQuery = new GraphQLObjectType({
             type: GameType,
             args: {id: {type: GraphQLString}},
             resolve(parent, args){
-                return _lodash.find(typeGamesData, {id: args.id});
+                return GTypeGame.findById(args.id);
+                //return _lodash.find(typeGamesData, {id: args.id});
             }
         },
 
@@ -243,7 +261,8 @@ const RootQuery = new GraphQLObjectType({
             type: Publisher,
             args: {id: {type: GraphQLString}},
             resolve(parent, args){
-                return _lodash.find(publishersData, {id: args.id});
+                return GPublisher.findById(args.id);
+                //return _lodash.find(publishersData, {id: args.id});
             }
         },
 
@@ -260,6 +279,7 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
+        //Add game
         CreateGame: {
             type: Game,
             args: {
@@ -281,11 +301,37 @@ const Mutation = new GraphQLObjectType({
             }
         },
 
+        //Update game
+        UpdateGame: {
+            type: Game,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)},
+                name: {type: GraphQLString},
+                price: {type: GraphQLInt},
+                typeID: {type: GraphQLString},
+                publisherID: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                return updateGame = GGame.findByIdAndUpdate(
+                    args.id,
+                    {
+                        $set: {
+                            name: args.name, 
+                            price: args.price, 
+                            typeID: args.typeID, 
+                            publisherID: args.publisherID
+                        }
+                    },
+                    {new: true}
+                );
+            }
+        },
+
         CreateTypeGame: {
             type: GameType,
             args: {
                 //id: {type: GraphQLString},
-                type_name: {type: GraphQLString},
+                type_name: {type: GraphQLNonNull(GraphQLString)},
                 description: {type: GraphQLString},
                 gameID: {type: GraphQLString}
             },

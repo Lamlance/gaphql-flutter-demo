@@ -5,8 +5,10 @@ const schema = require('./server/schema/schema');
 const mongoose = require('mongoose');
 
 const app = express(); 
+const cors = require('cors');
 const port = process.env.PORT || 4000;
 
+app.use(cors());
 app.use('/graphql', graphqlHTTP({
     graphiql: true,
     schema: schema
