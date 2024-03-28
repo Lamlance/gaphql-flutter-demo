@@ -5,7 +5,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initHiveForFlutter();
-  final HttpLink link = HttpLink ('http://localhost:4000/graphql');
+  final HttpLink link = HttpLink ('http://10.0.2.2:4000/graphql');
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
       link: link,

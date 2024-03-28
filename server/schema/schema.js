@@ -237,7 +237,7 @@ const RootQuery = new GraphQLObjectType({
 
         games: {type: new GraphQLList(Game),
             resolve(parent, args){
-                return gamesData;
+                return GGame.find({});
             }
         },
 
@@ -253,7 +253,7 @@ const RootQuery = new GraphQLObjectType({
         typeGames: {
             type: new GraphQLList(GameType),
             resolve(parent, args){
-                return typeGamesData;
+                return GTypeGame.find({});
             }
         },
 
@@ -269,7 +269,7 @@ const RootQuery = new GraphQLObjectType({
         publishers: {
             type: new GraphQLList(Publisher),
             resolve(parent, args){
-                return publishersData;
+                return GPublisher.find({});
             }
         }
     }

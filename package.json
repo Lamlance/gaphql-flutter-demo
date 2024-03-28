@@ -14,9 +14,9 @@
     "shortid": "2.2.16"
   },
   "license": "MIT",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js localhost 4000"
+    "start": "node app.js"
   },
   "keywords": [],
   "devDependencies": {
