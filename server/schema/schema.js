@@ -308,8 +308,6 @@ const Mutation = new GraphQLObjectType({
                 id: {type: new GraphQLNonNull(GraphQLString)},
                 name: {type: GraphQLString},
                 price: {type: GraphQLInt},
-                typeID: {type: GraphQLString},
-                publisherID: {type: GraphQLString}
             },
             resolve(parent, args){
                 return updateGame = GGame.findByIdAndUpdate(
@@ -318,12 +316,25 @@ const Mutation = new GraphQLObjectType({
                         $set: {
                             name: args.name, 
                             price: args.price, 
-                            typeID: args.typeID, 
-                            publisherID: args.publisherID
                         }
                     },
                     {new: true}
                 );
+            }
+        },
+        
+        //Remove game
+        RemoveGame: {
+            type: Game,
+            args: {
+                id: {type: GraphQLNonNull(GraphQLString)}
+            },
+            resolve(parent, args){
+                let removeGame = GGame.findByIdAndDelete(args.id).exec();
+                if(!removeGame){
+                    throw new "Error"()
+                }
+                return removeGame;
             }
         },
 
@@ -353,7 +364,6 @@ const Mutation = new GraphQLObjectType({
                 id: {type: new GraphQLNonNull(GraphQLString)},
                 type_name: {type: GraphQLString},
                 description: {type: GraphQLString},
-                gameID: {type: GraphQLString}
             },
             resolve(parent, args){
                 return updateTypeGame = GTypeGame.findByIdAndUpdate(
@@ -366,6 +376,21 @@ const Mutation = new GraphQLObjectType({
                     },
                     {new: true}
                 );
+            }
+        },
+
+        //Remove type of game
+        RemoveTypeGame: {
+            type: GameType,
+            args: {
+                id: {type: GraphQLNonNull(GraphQLString)}
+            },
+            resolve(parent, args){
+                let removeTypeGame = GTypeGame.findByIdAndDelete(args.id).exec();
+                if(!removeTypeGame){
+                    throw new "Error"()
+                }
+                return removeTypeGame;
             }
         },
 
@@ -398,7 +423,7 @@ const Mutation = new GraphQLObjectType({
                 publisher_name: {type: GraphQLString},
                 location: {type: GraphQLString},
                 since: {type: GraphQLInt},
-                gameID: {type: GraphQLString}
+
             },
             resolve(parent, args){
                 return updatePublisher = GPublisher.findByIdAndUpdate(
@@ -412,6 +437,21 @@ const Mutation = new GraphQLObjectType({
                     },
                     {new: true}
                 );
+            }
+        },
+
+        //Remove publisher
+        RemovePublisher: {
+            type: Publisher,
+            args: {
+                id: {type: GraphQLNonNull(GraphQLString)}
+            },
+            resolve(parent, args){
+                let removePublisher = GPublisher.findByIdAndDelete(args.id).exec();
+                if(!removePublisher){
+                    throw new "Error"()
+                }
+                return removePublisher;
             }
         }
     }
