@@ -1,0 +1,26 @@
+{
+  "name": "todo-list-server",
+  "version": "1.0.0",
+  "description": "Example server for use in the Apollo docs",
+  "dependencies": {
+    "apollo-server": "3.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "lodash": "^4.17.21",
+    "lru-cache": "4.1.5",
+    "mongoose": "^8.2.3",
+    "shortid": "2.2.16"
+  },
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/graphql": "14.2.3",
+    "nodemon": "2.0.12"
+  }
+}
