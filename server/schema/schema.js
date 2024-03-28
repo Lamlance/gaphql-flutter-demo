@@ -1,9 +1,8 @@
-const graphql = require('graphql');
-var _lodash = require('lodash');
-const GGame = require('../model/game');
-const GTypeGame = require('../model/typeGame');
-const GPublisher = require('../model/publisher');
-
+const graphql = require("graphql");
+var _lodash = require("lodash");
+const GGame = require("../model/game.js");
+const GTypeGame = require("../model/typeGame.js");
+const GPublisher = require("../model/publisher.js");
 
 //some dummy data for test
 // var gamesData = [
@@ -50,9 +49,6 @@ const GPublisher = require('../model/publisher');
 //     {id: '41', name: 'Terraria', price: 10, typeID: ['5', '17'], publisherID: '4'},
 //     {id: '42', name: 'Roblox', price: 0, typeID: ['5', '15', '17'], publisherID: '4'},
 // ];
-
-
-
 
 // var typeGamesData = [
 //     {id_type: '1', type_name: 'Shooter', description: 'Test player\'s speed and reaction time with focus on using weapons like guns.'},
@@ -112,352 +108,350 @@ const GPublisher = require('../model/publisher');
 //     { id_publisher: '22', publisher_name: 'FromSoftware', location: 'Tokyo, Japan', since: 1986, gameTypeID: ['8', '29'] }
 // ];
 
-
-
 //
-const { 
-    GraphQLObjectType, 
-    GraphQLString,
-    GraphQLInt, 
-    GraphQLSchema,
-    GraphQLList,
-    GraphQLNonNull
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLSchema,
+  GraphQLList,
+  GraphQLNonNull,
 } = graphql;
 
 //Create types
 const Game = new graphql.GraphQLObjectType({
-    name: 'Game',
-    description: 'Documentation for games...',
-    fields: () => ({
-        id: {type: GraphQLString},
-        name: {type: GraphQLString},
-        price: {type: GraphQLInt},
-        publisher:{
-            type: Publisher,
-            resolve(parent, args){
-                return GPublisher.findById(parent.publisherID);
-                //return _lodash.find(publishersData, {id: parent.publisherID});
-            }
-        },
-        game_type:{
-            type: GameType,
-            resolve(parent, args){
-                return GTypeGame.findById(parent.typeID);
-                //return _lodash.find(typeGamesData, {id: parent.typeID});
-            }
-        },
-        game_types:{
-            type: new GraphQLList(GameType),
-            resolve(parent, args){
-                return GTypeGame.find({typeID: parent.typeID})
-                // return _lodash.filter(typeGamesData, (typeGame) => {
-                //     return parent.typeID.includes(typeGame.id);
-                // });
-            }
-        },
-        publishers:{
-            type: new GraphQLList(Publisher),
-            resolve(parent, args){
-                return GPublisher.find({publisherID: parent.publisherID})
-                // return _lodash.filter(publishersData, (publisher) => {
-                //     return parent.publisherID.includes(publisher.id);
-                // });
-            }
-        }
-    }),
+  name: "Game",
+  description: "Documentation for games...",
+  fields: () => ({
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    price: { type: GraphQLInt },
+    publisher: {
+      type: Publisher,
+      resolve(parent, args) {
+        return GPublisher.findById(parent.publisherID);
+        //return _lodash.find(publishersData, {id: parent.publisherID});
+      },
+    },
+    game_type: {
+      type: GameType,
+      resolve(parent, args) {
+        return GTypeGame.findById(parent.typeID);
+        //return _lodash.find(typeGamesData, {id: parent.typeID});
+      },
+    },
+    game_types: {
+      type: new GraphQLList(GameType),
+      resolve(parent, args) {
+        return GTypeGame.find({ typeID: parent.typeID });
+        // return _lodash.filter(typeGamesData, (typeGame) => {
+        //     return parent.typeID.includes(typeGame.id);
+        // });
+      },
+    },
+    publishers: {
+      type: new GraphQLList(Publisher),
+      resolve(parent, args) {
+        return GPublisher.find({ publisherID: parent.publisherID });
+        // return _lodash.filter(publishersData, (publisher) => {
+        //     return parent.publisherID.includes(publisher.id);
+        // });
+      },
+    },
+  }),
 });
 
 const GameType = new graphql.GraphQLObjectType({
-    name: 'TypeGame',
-    description: 'Documentation for type of games...',
-    fields: () => ({
-        id: {type: GraphQLString},
-        type_name: {type: GraphQLString},
-        description: {type: GraphQLString},
-        game:{
-            type: new GraphQLList(Game),
-            resolve(parent, args){
-                return GGame.find({typeID: parent.id});
-                //return _lodash.filter(gamesData, {typeID: parent.id});
-            },
-        },
+  name: "TypeGame",
+  description: "Documentation for type of games...",
+  fields: () => ({
+    id: { type: GraphQLString },
+    type_name: { type: GraphQLString },
+    description: { type: GraphQLString },
+    game: {
+      type: new GraphQLList(Game),
+      resolve(parent, args) {
+        return GGame.find({ typeID: parent.id });
+        //return _lodash.filter(gamesData, {typeID: parent.id});
+      },
+    },
 
-        publisher:{
-            type: new GraphQLList(Publisher),
-            resolve(parent, args){
-                return GPublisher.find({gameTypeID: parent.id});
-                // return _lodash.filter(publishersData, (publisher) => {
-                //     return publisher.gameTypeID.includes(parent.id);
-                // });
-            },
-        }
-    }),
+    publisher: {
+      type: new GraphQLList(Publisher),
+      resolve(parent, args) {
+        return GPublisher.find({ gameTypeID: parent.id });
+        // return _lodash.filter(publishersData, (publisher) => {
+        //     return publisher.gameTypeID.includes(parent.id);
+        // });
+      },
+    },
+  }),
 });
 
 const Publisher = new graphql.GraphQLObjectType({
-    name: 'Publisher',
-    description: 'Documentation for publishers...',
-    fields: () => ({
-        id: {type: GraphQLString},
-        publisher_name: {type: GraphQLString},
-        location: {type: GraphQLString},
-        since: {type: GraphQLInt},
-        game:{
-            type: new GraphQLList(Game),
-            resolve(parent, args){
-                return GGame.find({publisherID: parent.id});
-               //return _lodash.filter(gamesData, {publisherID: parent.id});
-            },
-        },
-        game_type:{
-            type: new GraphQLList(GameType),
-            resolve(parent, args){
-                return GTypeGame.find({gameID: parent.id});
-                // return _lodash.filter(typeGamesData, (typeGame) => {
-                //     return parent.gameTypeID.includes(typeGame.id);
-                // });
-            },
-        }
-    }),
+  name: "Publisher",
+  description: "Documentation for publishers...",
+  fields: () => ({
+    id: { type: GraphQLString },
+    publisher_name: { type: GraphQLString },
+    location: { type: GraphQLString },
+    since: { type: GraphQLInt },
+    game: {
+      type: new GraphQLList(Game),
+      resolve(parent, args) {
+        return GGame.find({ publisherID: parent.id });
+        //return _lodash.filter(gamesData, {publisherID: parent.id});
+      },
+    },
+    game_type: {
+      type: new GraphQLList(GameType),
+      resolve(parent, args) {
+        return GTypeGame.find({ gameID: parent.id });
+        // return _lodash.filter(typeGamesData, (typeGame) => {
+        //     return parent.gameTypeID.includes(typeGame.id);
+        // });
+      },
+    },
+  }),
 });
 
 //RootQuery
 const RootQuery = new GraphQLObjectType({
-    name: 'RootQueryType',
-    description: 'Description',
-    fields: {
-        game: {
-            type: Game,
-            args: {id: {type: GraphQLString}},
-            resolve(parent, args){
-                return GGame.findById(args.id);
-                //return _lodash.find(gamesData, {id: args.id});
-            }
-        },
+  name: "RootQueryType",
+  description: "Description",
+  fields: {
+    game: {
+      type: Game,
+      args: { id: { type: GraphQLString } },
+      resolve(parent, args) {
+        return GGame.findById(args.id);
+        //return _lodash.find(gamesData, {id: args.id});
+      },
+    },
 
-        games: {type: new GraphQLList(Game),
-            resolve(parent, args){
-                return GGame.find({});
-            }
-        },
+    games: {
+      type: new GraphQLList(Game),
+      resolve(parent, args) {
+        return GGame.find({});
+      },
+    },
 
-        typeGame: {
-            type: GameType,
-            args: {id: {type: GraphQLString}},
-            resolve(parent, args){
-                return GTypeGame.findById(args.id);
-                //return _lodash.find(typeGamesData, {id: args.id});
-            }
-        },
+    typeGame: {
+      type: GameType,
+      args: { id: { type: GraphQLString } },
+      resolve(parent, args) {
+        return GTypeGame.findById(args.id);
+        //return _lodash.find(typeGamesData, {id: args.id});
+      },
+    },
 
-        typeGames: {
-            type: new GraphQLList(GameType),
-            resolve(parent, args){
-                return GTypeGame.find({});
-            }
-        },
+    typeGames: {
+      type: new GraphQLList(GameType),
+      resolve(parent, args) {
+        return GTypeGame.find({});
+      },
+    },
 
-        publisher: {
-            type: Publisher,
-            args: {id: {type: GraphQLString}},
-            resolve(parent, args){
-                return GPublisher.findById(args.id);
-                //return _lodash.find(publishersData, {id: args.id});
-            }
-        },
+    publisher: {
+      type: Publisher,
+      args: { id: { type: GraphQLString } },
+      resolve(parent, args) {
+        return GPublisher.findById(args.id);
+        //return _lodash.find(publishersData, {id: args.id});
+      },
+    },
 
-        publishers: {
-            type: new GraphQLList(Publisher),
-            resolve(parent, args){
-                return GPublisher.find({});
-            }
-        }
-    }
+    publishers: {
+      type: new GraphQLList(Publisher),
+      resolve(parent, args) {
+        return GPublisher.find({});
+      },
+    },
+  },
 });
 
 //Mutation
 const Mutation = new GraphQLObjectType({
-    name: 'Mutation',
-    fields: {
-        //Add game
-        CreateGame: {
-            type: Game,
-            args: {
-                //id: {type: GraphQLString},
-                name: {type: new GraphQLNonNull(GraphQLString)},
-                price: {type: new GraphQLNonNull(GraphQLInt)},
-                typeID: {type: new GraphQLNonNull(GraphQLString)},
-                publisherID: {type: new GraphQLNonNull(GraphQLString)}
-            },
-            resolve(parent, args){
-                let game = GGame({
-                    name: args.name,
-                    price: args.price,
-                    typeID: args.typeID,
-                    publisherID: args.publisherID
-                });
-                //gamesData.push(game);
-                return game.save();
-            }
-        },
+  name: "Mutation",
+  fields: {
+    //Add game
+    CreateGame: {
+      type: Game,
+      args: {
+        //id: {type: GraphQLString},
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        price: { type: new GraphQLNonNull(GraphQLInt) },
+        typeID: { type: new GraphQLNonNull(GraphQLString) },
+        publisherID: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let game = GGame({
+          name: args.name,
+          price: args.price,
+          typeID: args.typeID,
+          publisherID: args.publisherID,
+        });
+        //gamesData.push(game);
+        return game.save();
+      },
+    },
 
-        //Update game
-        UpdateGame: {
-            type: Game,
-            args: {
-                id: {type: new GraphQLNonNull(GraphQLString)},
-                name: {type: GraphQLString},
-                price: {type: GraphQLInt},
+    //Update game
+    UpdateGame: {
+      type: Game,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: GraphQLString },
+        price: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return (updateGame = GGame.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              name: args.name,
+              price: args.price,
             },
-            resolve(parent, args){
-                return updateGame = GGame.findByIdAndUpdate(
-                    args.id,
-                    {
-                        $set: {
-                            name: args.name, 
-                            price: args.price, 
-                        }
-                    },
-                    {new: true}
-                );
-            }
-        },
-        
-        //Remove game
-        RemoveGame: {
-            type: Game,
-            args: {
-                id: {type: GraphQLNonNull(GraphQLString)}
-            },
-            resolve(parent, args){
-                let removeGame = GGame.findByIdAndDelete(args.id).exec();
-                if(!removeGame){
-                    throw new "Error"()
-                }
-                return removeGame;
-            }
-        },
+          },
+          { new: true }
+        ));
+      },
+    },
 
-        //Create type of game
-        CreateTypeGame: {
-            type: GameType,
-            args: {
-                //id: {type: GraphQLString},
-                type_name: {type: GraphQLNonNull(GraphQLString)},
-                description: {type: GraphQLString},
-                gameID: {type: GraphQLString}
-            },
-            resolve(parent, args){
-                let typeGame = GTypeGame({
-                    type_name: args.type_name,
-                    description: args.description
-                });
-                //typeGamesData.push(typeGame);
-                return typeGame.save();
-            }
-        },
-
-        //Update type of game
-        UpdateTypeGame: {
-            type: GameType,
-            args: {
-                id: {type: new GraphQLNonNull(GraphQLString)},
-                type_name: {type: GraphQLString},
-                description: {type: GraphQLString},
-            },
-            resolve(parent, args){
-                return updateTypeGame = GTypeGame.findByIdAndUpdate(
-                    args.id,
-                    {
-                        $set: {
-                            type_name: args.type_name,
-                            description: args.description
-                        }
-                    },
-                    {new: true}
-                );
-            }
-        },
-
-        //Remove type of game
-        RemoveTypeGame: {
-            type: GameType,
-            args: {
-                id: {type: GraphQLNonNull(GraphQLString)}
-            },
-            resolve(parent, args){
-                let removeTypeGame = GTypeGame.findByIdAndDelete(args.id).exec();
-                if(!removeTypeGame){
-                    throw new "Error"()
-                }
-                return removeTypeGame;
-            }
-        },
-
-        //Create publisher
-        CreatePublisher: {
-            type: Publisher,
-            args: {
-                //id: {type: GraphQLString},
-                publisher_name: {type: new GraphQLNonNull(GraphQLString)},
-                location: {type: new GraphQLNonNull(GraphQLString)},
-                since: {type: new GraphQLNonNull(GraphQLInt)},
-                gameID: {type: GraphQLString}
-            },
-            resolve(parent, args){
-                let publisher = GPublisher({
-                    publisher_name: args.publisher_name,
-                    location: args.location,
-                    since: args.since
-                });
-                //publishersData.push(publisher);
-                return publisher.save();
-            }
-        },
-
-        //Update publisher
-        UpdatePublisher: {
-            type: Publisher,
-            args: {
-                id: {type: new GraphQLNonNull(GraphQLString)},
-                publisher_name: {type: GraphQLString},
-                location: {type: GraphQLString},
-                since: {type: GraphQLInt},
-
-            },
-            resolve(parent, args){
-                return updatePublisher = GPublisher.findByIdAndUpdate(
-                    args.id,
-                    {
-                        $set: {
-                            publisher_name: args.publisher_name,
-                            location: args.location,
-                            since: args.since
-                        }
-                    },
-                    {new: true}
-                );
-            }
-        },
-
-        //Remove publisher
-        RemovePublisher: {
-            type: Publisher,
-            args: {
-                id: {type: GraphQLNonNull(GraphQLString)}
-            },
-            resolve(parent, args){
-                let removePublisher = GPublisher.findByIdAndDelete(args.id).exec();
-                if(!removePublisher){
-                    throw new "Error"()
-                }
-                return removePublisher;
-            }
+    //Remove game
+    RemoveGame: {
+      type: Game,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let removeGame = GGame.findByIdAndDelete(args.id).exec();
+        if (!removeGame) {
+          throw new "Error"();
         }
-    }
+        return removeGame;
+      },
+    },
+
+    //Create type of game
+    CreateTypeGame: {
+      type: GameType,
+      args: {
+        //id: {type: GraphQLString},
+        type_name: { type: GraphQLNonNull(GraphQLString) },
+        description: { type: GraphQLString },
+        gameID: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        let typeGame = GTypeGame({
+          type_name: args.type_name,
+          description: args.description,
+        });
+        //typeGamesData.push(typeGame);
+        return typeGame.save();
+      },
+    },
+
+    //Update type of game
+    UpdateTypeGame: {
+      type: GameType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        type_name: { type: GraphQLString },
+        description: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        return (updateTypeGame = GTypeGame.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              type_name: args.type_name,
+              description: args.description,
+            },
+          },
+          { new: true }
+        ));
+      },
+    },
+
+    //Remove type of game
+    RemoveTypeGame: {
+      type: GameType,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let removeTypeGame = GTypeGame.findByIdAndDelete(args.id).exec();
+        if (!removeTypeGame) {
+          throw new "Error"();
+        }
+        return removeTypeGame;
+      },
+    },
+
+    //Create publisher
+    CreatePublisher: {
+      type: Publisher,
+      args: {
+        //id: {type: GraphQLString},
+        publisher_name: { type: new GraphQLNonNull(GraphQLString) },
+        location: { type: new GraphQLNonNull(GraphQLString) },
+        since: { type: new GraphQLNonNull(GraphQLInt) },
+        gameID: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        let publisher = GPublisher({
+          publisher_name: args.publisher_name,
+          location: args.location,
+          since: args.since,
+        });
+        //publishersData.push(publisher);
+        return publisher.save();
+      },
+    },
+
+    //Update publisher
+    UpdatePublisher: {
+      type: Publisher,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        publisher_name: { type: GraphQLString },
+        location: { type: GraphQLString },
+        since: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return (updatePublisher = GPublisher.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              publisher_name: args.publisher_name,
+              location: args.location,
+              since: args.since,
+            },
+          },
+          { new: true }
+        ));
+      },
+    },
+
+    //Remove publisher
+    RemovePublisher: {
+      type: Publisher,
+      args: {
+        id: { type: GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let removePublisher = GPublisher.findByIdAndDelete(args.id).exec();
+        if (!removePublisher) {
+          throw new "Error"();
+        }
+        return removePublisher;
+      },
+    },
+  },
 });
 
 module.exports = new GraphQLSchema({
-    query: RootQuery,
-    mutation: Mutation
+  query: RootQuery,
+  mutation: Mutation,
 });
