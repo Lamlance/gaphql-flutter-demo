@@ -77,17 +77,37 @@ class _GamesPageState extends State<GamesPage> {
                             // ignore: prefer_const_constructors
                             style:TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.bold)),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-                              child: Text("Publisher: ${game["publisher"]?? "N/A"}"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-                              child: Text("${game["price"]?? "N/A"} USD"),
-                            ),
+                              fontWeight: FontWeight.bold)
+                              ),
+                              Row(
+                                children: [
+                                  InkWell(
+                                    child: Container(
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    onTap: () async{
+                                      print("Delete game");
+                                    },
+                                  )
+                                ],
+                              )
                         ],
-                      )
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                        child: Text("Publisher: ${game["publisher"]?? "N/A"}"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8, top: 8),
+                        child: Text("Type: ${game["game_type"]?? "N/A"}"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                        child: Text("${game["price"]?? "N/A"} USD"),
+                      ),
                     ],
                   ),
                 )

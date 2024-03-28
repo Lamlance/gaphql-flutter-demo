@@ -3,6 +3,7 @@ import 'package:demo_flutter_graphql/src/screens/add_game_page.dart';
 import 'package:demo_flutter_graphql/src/screens/games_page.dart';
 import 'package:flutter/material.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
