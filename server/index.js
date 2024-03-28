@@ -24,11 +24,21 @@ type Mutation {
 const cache = new Map();
 cache.set("test_id", "example task");
 // Resolver definitions
-const resolvers = {
-  Query: {
-    todos: () => {
+
+function getAll_wait() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
       const todos = [];
       cache.forEach((description, id) => todos.push({ description, id }));
+      resolve(todos);
+    }, 4000);
+  });
+}
+
+const resolvers = {
+  Query: {
+    todos: async (_, args, ctx, info) => {
+      const todos = await getAll_wait();
       return todos;
     },
     todo: (_, { id }) => {
@@ -36,13 +46,13 @@ const resolvers = {
     },
   },
   Mutation: {
-    addTodo: (_, { description }) => {
+    addTodo: (_, { description }, ctx, info) => {
       const id = generate();
       const todo = { description, id };
       cache.set(id, description);
       return todo;
     },
-    updateTodo: (_, { description, id }) => {
+    updateTodo: (_, { description, id }, ctx, info) => {
       const todo = { description, id };
       cache.set(id, description);
       return todo;

@@ -17,17 +17,17 @@ class TodoClient {
     _client = Client(link: _link);
   }
 
-  Future<List<GgetAllTodosData_todos?>?> getAllTodo() async {
-    var c = Completer<List<GgetAllTodosData_todos?>?>();
+  void getAllTodo(
+      {required void Function(List<GgetAllTodosData_todos?>?) listener}) {
     _client.request(GgetAllTodosReq()).listen((event) {
       event.graphqlErrors?.forEach((e) {
         log(e.message);
       });
-      if (event.data == null) {
-        return c.complete(null);
+      MemoryStore()
+      if (event.data?.todos == null) {
+        return listener(null);
       }
-      return c.complete(event.data!.todos?.toList());
+      return listener(event.data!.todos!.toList());
     });
-    return c.future;
   }
 }

@@ -21,10 +21,24 @@ class _TodoListFerryScreenState extends State<TodoListFerryScreen>
   bool get wantKeepAlive => true;
 
   void _queryTodos() {
-    _client.getAllTodo().then((value) {
-      log("To do querying");
-      if (value == null) return log("To do querying null!");
-      log('To do list length ${value.length.toString()}');
+    // _client.getAllTodo().then((value) {
+    //   log("To do querying");
+    //   if (value == null) return log("To do querying null!");
+    //   log('To do list length ${value.length.toString()}');
+    //   setState(() {
+    //     todos.removeWhere((element) => true);
+    //     todos.addAll(value.fold<List<String>>([], (previousValue, element) {
+    //       if (element != null) {
+    //         previousValue.add('${element.id} - ${element.description}');
+    //       }
+    //       return previousValue;
+    //     }));
+    //   });
+    // }
+    // );
+    _client.getAllTodo(listener: (value) {
+      log(value == null ? "no data" : "yes data");
+      if (value == null) return;
       setState(() {
         todos.removeWhere((element) => true);
         todos.addAll(value.fold<List<String>>([], (previousValue, element) {
