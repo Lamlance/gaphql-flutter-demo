@@ -1,12 +1,12 @@
 import 'package:demo_flutter_graphql/src/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+//import 'package:flutter/widgets.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class MainApp extends StatelessWidget {
   final ValueNotifier<GraphQLClient> client;
 
-  const MainApp({Key? key, required this.client}) : super(key: key);
+  const MainApp({super.key, required this.client});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
               primarySwatch: Colors.blueGrey,
               visualDensity: VisualDensity.adaptivePlatformDensity, 
               textTheme:theme,
-              appBarTheme: AppBarTheme(
+              appBarTheme: const AppBarTheme(
                 iconTheme:IconThemeData(color:Colors.black87),
               )),
             darkTheme: ThemeData.dark(),
@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
               return MaterialPageRoute<void>(
                 settings: routeSettings,
                 builder: (BuildContext context) {
-                  return HomeScreen();
+                  return const HomeScreen();
                 },
               );
             }),

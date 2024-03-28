@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "demo_flutter_graphql",
+            "cwd": "demo_flutter_graphql",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "demo_flutter_graphql (profile mode)",
+            "cwd": "demo_flutter_graphql",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "demo_flutter_graphql (release mode)",
+            "cwd": "demo_flutter_graphql",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "demo_graphql",
+            "cwd": "demo_graphql",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "demo_graphql (profile mode)",
+            "cwd": "demo_graphql",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "demo_graphql (release mode)",
+            "cwd": "demo_graphql",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

@@ -4,7 +4,10 @@
   "description": "Example server for use in the Apollo docs",
   "dependencies": {
     "apollo-server": "3.4.1",
-    "graphql": "15.5.1",
+    "express": "^4.19.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "lodash": "^4.17.21",
     "lru-cache": "4.1.5",
     "shortid": "2.2.16"
   },
