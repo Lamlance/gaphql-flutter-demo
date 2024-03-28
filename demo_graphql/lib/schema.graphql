@@ -1,14 +1,83 @@
-type Query {
-  todos: [Todo]
-  todo(id: String!): Todo
+schema {
+  query: RootQueryType
+  mutation: Mutation
 }
 
-type Todo {
-  id: String!
-  description: String!
+"""
+Documentation for games...
+"""
+type Game {
+  id: String
+  name: String
+  price: Int
+  publisher: Publisher
+  game_type: TypeGame
+  game_types: [TypeGame]
+  publishers: [Publisher]
 }
 
 type Mutation {
-  addTodo(description: String!): Todo
-  updateTodo(id: String!, description: String!): Todo
+  CreateGame(
+    name: String!
+    price: Int!
+    typeID: String!
+    publisherID: String!
+  ): Game
+  UpdateGame(id: String!, name: String, price: Int): Game
+  RemoveGame(id: String!): Game
+  CreateTypeGame(
+    type_name: String!
+    description: String
+    gameID: String
+  ): TypeGame
+  UpdateTypeGame(id: String!, type_name: String, description: String): TypeGame
+  RemoveTypeGame(id: String!): TypeGame
+  CreatePublisher(
+    publisher_name: String!
+    location: String!
+    since: Int!
+    gameID: String
+  ): Publisher
+  UpdatePublisher(
+    id: String!
+    publisher_name: String
+    location: String
+    since: Int
+  ): Publisher
+  RemovePublisher(id: String!): Publisher
+}
+
+"""
+Documentation for publishers...
+"""
+type Publisher {
+  id: String
+  publisher_name: String
+  location: String
+  since: Int
+  game: [Game]
+  game_type: [TypeGame]
+}
+
+"""
+Description
+"""
+type RootQueryType {
+  game(id: String): Game
+  games: [Game]
+  typeGame(id: String): TypeGame
+  typeGames: [TypeGame]
+  publisher(id: String): Publisher
+  publishers: [Publisher]
+}
+
+"""
+Documentation for type of games...
+"""
+type TypeGame {
+  id: String
+  type_name: String
+  description: String
+  game: [Game]
+  publisher: [Publisher]
 }

@@ -6,24 +6,26 @@ part of 'operation.req.gql.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GgetAllTodosReq> _$ggetAllTodosReqSerializer =
-    new _$GgetAllTodosReqSerializer();
-Serializer<GAddTodoReq> _$gAddTodoReqSerializer = new _$GAddTodoReqSerializer();
+Serializer<GGetAllGameReq> _$gGetAllGameReqSerializer =
+    new _$GGetAllGameReqSerializer();
+Serializer<GAddGameReq> _$gAddGameReqSerializer = new _$GAddGameReqSerializer();
+Serializer<GRemoveGameReq> _$gRemoveGameReqSerializer =
+    new _$GRemoveGameReqSerializer();
 
-class _$GgetAllTodosReqSerializer
-    implements StructuredSerializer<GgetAllTodosReq> {
+class _$GGetAllGameReqSerializer
+    implements StructuredSerializer<GGetAllGameReq> {
   @override
-  final Iterable<Type> types = const [GgetAllTodosReq, _$GgetAllTodosReq];
+  final Iterable<Type> types = const [GGetAllGameReq, _$GGetAllGameReq];
   @override
-  final String wireName = 'GgetAllTodosReq';
+  final String wireName = 'GGetAllGameReq';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GgetAllTodosReq object,
+  Iterable<Object?> serialize(Serializers serializers, GGetAllGameReq object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GgetAllTodosVars)),
+          specifiedType: const FullType(_i3.GGetAllGameVars)),
       'operation',
       serializers.serialize(object.operation,
           specifiedType: const FullType(_i4.Operation)),
@@ -44,7 +46,7 @@ class _$GgetAllTodosReqSerializer
       result
         ..add('optimisticResponse')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(_i2.GgetAllTodosData)));
+            specifiedType: const FullType(_i2.GGetAllGameData)));
     }
     value = object.updateCacheHandlerKey;
     if (value != null) {
@@ -72,10 +74,10 @@ class _$GgetAllTodosReqSerializer
   }
 
   @override
-  GgetAllTodosReq deserialize(
+  GGetAllGameReq deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GgetAllTodosReqBuilder();
+    final result = new GGetAllGameReqBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -85,8 +87,8 @@ class _$GgetAllTodosReqSerializer
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GgetAllTodosVars))!
-              as _i3.GgetAllTodosVars);
+                  specifiedType: const FullType(_i3.GGetAllGameVars))!
+              as _i3.GGetAllGameVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -98,8 +100,8 @@ class _$GgetAllTodosReqSerializer
           break;
         case 'optimisticResponse':
           result.optimisticResponse.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.GgetAllTodosData))!
-              as _i2.GgetAllTodosData);
+                  specifiedType: const FullType(_i2.GGetAllGameData))!
+              as _i2.GGetAllGameData);
           break;
         case 'updateCacheHandlerKey':
           result.updateCacheHandlerKey = serializers.deserialize(value,
@@ -128,19 +130,19 @@ class _$GgetAllTodosReqSerializer
   }
 }
 
-class _$GAddTodoReqSerializer implements StructuredSerializer<GAddTodoReq> {
+class _$GAddGameReqSerializer implements StructuredSerializer<GAddGameReq> {
   @override
-  final Iterable<Type> types = const [GAddTodoReq, _$GAddTodoReq];
+  final Iterable<Type> types = const [GAddGameReq, _$GAddGameReq];
   @override
-  final String wireName = 'GAddTodoReq';
+  final String wireName = 'GAddGameReq';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GAddTodoReq object,
+  Iterable<Object?> serialize(Serializers serializers, GAddGameReq object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'vars',
       serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GAddTodoVars)),
+          specifiedType: const FullType(_i3.GAddGameVars)),
       'operation',
       serializers.serialize(object.operation,
           specifiedType: const FullType(_i4.Operation)),
@@ -161,7 +163,7 @@ class _$GAddTodoReqSerializer implements StructuredSerializer<GAddTodoReq> {
       result
         ..add('optimisticResponse')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(_i2.GAddTodoData)));
+            specifiedType: const FullType(_i2.GAddGameData)));
     }
     value = object.updateCacheHandlerKey;
     if (value != null) {
@@ -189,9 +191,9 @@ class _$GAddTodoReqSerializer implements StructuredSerializer<GAddTodoReq> {
   }
 
   @override
-  GAddTodoReq deserialize(Serializers serializers, Iterable<Object?> serialized,
+  GAddGameReq deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAddTodoReqBuilder();
+    final result = new GAddGameReqBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -201,8 +203,8 @@ class _$GAddTodoReqSerializer implements StructuredSerializer<GAddTodoReq> {
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAddTodoVars))!
-              as _i3.GAddTodoVars);
+                  specifiedType: const FullType(_i3.GAddGameVars))!
+              as _i3.GAddGameVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -214,8 +216,8 @@ class _$GAddTodoReqSerializer implements StructuredSerializer<GAddTodoReq> {
           break;
         case 'optimisticResponse':
           result.optimisticResponse.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.GAddTodoData))!
-              as _i2.GAddTodoData);
+                  specifiedType: const FullType(_i2.GAddGameData))!
+              as _i2.GAddGameData);
           break;
         case 'updateCacheHandlerKey':
           result.updateCacheHandlerKey = serializers.deserialize(value,
@@ -244,18 +246,136 @@ class _$GAddTodoReqSerializer implements StructuredSerializer<GAddTodoReq> {
   }
 }
 
-class _$GgetAllTodosReq extends GgetAllTodosReq {
+class _$GRemoveGameReqSerializer
+    implements StructuredSerializer<GRemoveGameReq> {
   @override
-  final _i3.GgetAllTodosVars vars;
+  final Iterable<Type> types = const [GRemoveGameReq, _$GRemoveGameReq];
+  @override
+  final String wireName = 'GRemoveGameReq';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GRemoveGameReq object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'vars',
+      serializers.serialize(object.vars,
+          specifiedType: const FullType(_i3.GRemoveGameVars)),
+      'operation',
+      serializers.serialize(object.operation,
+          specifiedType: const FullType(_i4.Operation)),
+      'executeOnListen',
+      serializers.serialize(object.executeOnListen,
+          specifiedType: const FullType(bool)),
+    ];
+    Object? value;
+    value = object.requestId;
+    if (value != null) {
+      result
+        ..add('requestId')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.optimisticResponse;
+    if (value != null) {
+      result
+        ..add('optimisticResponse')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i2.GRemoveGameData)));
+    }
+    value = object.updateCacheHandlerKey;
+    if (value != null) {
+      result
+        ..add('updateCacheHandlerKey')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.updateCacheHandlerContext;
+    if (value != null) {
+      result
+        ..add('updateCacheHandlerContext')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                Map, const [const FullType(String), const FullType(dynamic)])));
+    }
+    value = object.fetchPolicy;
+    if (value != null) {
+      result
+        ..add('fetchPolicy')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(_i1.FetchPolicy)));
+    }
+    return result;
+  }
+
+  @override
+  GRemoveGameReq deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GRemoveGameReqBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'vars':
+          result.vars.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(_i3.GRemoveGameVars))!
+              as _i3.GRemoveGameVars);
+          break;
+        case 'operation':
+          result.operation = serializers.deserialize(value,
+              specifiedType: const FullType(_i4.Operation))! as _i4.Operation;
+          break;
+        case 'requestId':
+          result.requestId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'optimisticResponse':
+          result.optimisticResponse.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(_i2.GRemoveGameData))!
+              as _i2.GRemoveGameData);
+          break;
+        case 'updateCacheHandlerKey':
+          result.updateCacheHandlerKey = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'updateCacheHandlerContext':
+          result.updateCacheHandlerContext = serializers.deserialize(value,
+              specifiedType: const FullType(Map, const [
+                const FullType(String),
+                const FullType(dynamic)
+              ])) as Map<String, dynamic>?;
+          break;
+        case 'fetchPolicy':
+          result.fetchPolicy = serializers.deserialize(value,
+                  specifiedType: const FullType(_i1.FetchPolicy))
+              as _i1.FetchPolicy?;
+          break;
+        case 'executeOnListen':
+          result.executeOnListen = serializers.deserialize(value,
+              specifiedType: const FullType(bool))! as bool;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GGetAllGameReq extends GGetAllGameReq {
+  @override
+  final _i3.GGetAllGameVars vars;
   @override
   final _i4.Operation operation;
   @override
   final String? requestId;
   @override
-  final _i2.GgetAllTodosData? Function(
-      _i2.GgetAllTodosData?, _i2.GgetAllTodosData?)? updateResult;
+  final _i2.GGetAllGameData? Function(
+      _i2.GGetAllGameData?, _i2.GGetAllGameData?)? updateResult;
   @override
-  final _i2.GgetAllTodosData? optimisticResponse;
+  final _i2.GGetAllGameData? optimisticResponse;
   @override
   final String? updateCacheHandlerKey;
   @override
@@ -267,10 +387,10 @@ class _$GgetAllTodosReq extends GgetAllTodosReq {
   @override
   final _i4.Context? context;
 
-  factory _$GgetAllTodosReq([void Function(GgetAllTodosReqBuilder)? updates]) =>
-      (new GgetAllTodosReqBuilder()..update(updates))._build();
+  factory _$GGetAllGameReq([void Function(GGetAllGameReqBuilder)? updates]) =>
+      (new GGetAllGameReqBuilder()..update(updates))._build();
 
-  _$GgetAllTodosReq._(
+  _$GGetAllGameReq._(
       {required this.vars,
       required this.operation,
       this.requestId,
@@ -282,26 +402,26 @@ class _$GgetAllTodosReq extends GgetAllTodosReq {
       required this.executeOnListen,
       this.context})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GgetAllTodosReq', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GGetAllGameReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, r'GgetAllTodosReq', 'operation');
+        operation, r'GGetAllGameReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
-        executeOnListen, r'GgetAllTodosReq', 'executeOnListen');
+        executeOnListen, r'GGetAllGameReq', 'executeOnListen');
   }
 
   @override
-  GgetAllTodosReq rebuild(void Function(GgetAllTodosReqBuilder) updates) =>
+  GGetAllGameReq rebuild(void Function(GGetAllGameReqBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GgetAllTodosReqBuilder toBuilder() =>
-      new GgetAllTodosReqBuilder()..replace(this);
+  GGetAllGameReqBuilder toBuilder() =>
+      new GGetAllGameReqBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     final dynamic _$dynamicOther = other;
-    return other is GgetAllTodosReq &&
+    return other is GGetAllGameReq &&
         vars == other.vars &&
         operation == other.operation &&
         requestId == other.requestId &&
@@ -333,7 +453,7 @@ class _$GgetAllTodosReq extends GgetAllTodosReq {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GgetAllTodosReq')
+    return (newBuiltValueToStringHelper(r'GGetAllGameReq')
           ..add('vars', vars)
           ..add('operation', operation)
           ..add('requestId', requestId)
@@ -348,14 +468,14 @@ class _$GgetAllTodosReq extends GgetAllTodosReq {
   }
 }
 
-class GgetAllTodosReqBuilder
-    implements Builder<GgetAllTodosReq, GgetAllTodosReqBuilder> {
-  _$GgetAllTodosReq? _$v;
+class GGetAllGameReqBuilder
+    implements Builder<GGetAllGameReq, GGetAllGameReqBuilder> {
+  _$GGetAllGameReq? _$v;
 
-  _i3.GgetAllTodosVarsBuilder? _vars;
-  _i3.GgetAllTodosVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GgetAllTodosVarsBuilder();
-  set vars(_i3.GgetAllTodosVarsBuilder? vars) => _$this._vars = vars;
+  _i3.GGetAllGameVarsBuilder? _vars;
+  _i3.GGetAllGameVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GGetAllGameVarsBuilder();
+  set vars(_i3.GGetAllGameVarsBuilder? vars) => _$this._vars = vars;
 
   _i4.Operation? _operation;
   _i4.Operation? get operation => _$this._operation;
@@ -365,20 +485,20 @@ class GgetAllTodosReqBuilder
   String? get requestId => _$this._requestId;
   set requestId(String? requestId) => _$this._requestId = requestId;
 
-  _i2.GgetAllTodosData? Function(_i2.GgetAllTodosData?, _i2.GgetAllTodosData?)?
+  _i2.GGetAllGameData? Function(_i2.GGetAllGameData?, _i2.GGetAllGameData?)?
       _updateResult;
-  _i2.GgetAllTodosData? Function(_i2.GgetAllTodosData?, _i2.GgetAllTodosData?)?
+  _i2.GGetAllGameData? Function(_i2.GGetAllGameData?, _i2.GGetAllGameData?)?
       get updateResult => _$this._updateResult;
   set updateResult(
-          _i2.GgetAllTodosData? Function(
-                  _i2.GgetAllTodosData?, _i2.GgetAllTodosData?)?
+          _i2.GGetAllGameData? Function(
+                  _i2.GGetAllGameData?, _i2.GGetAllGameData?)?
               updateResult) =>
       _$this._updateResult = updateResult;
 
-  _i2.GgetAllTodosDataBuilder? _optimisticResponse;
-  _i2.GgetAllTodosDataBuilder get optimisticResponse =>
-      _$this._optimisticResponse ??= new _i2.GgetAllTodosDataBuilder();
-  set optimisticResponse(_i2.GgetAllTodosDataBuilder? optimisticResponse) =>
+  _i2.GGetAllGameDataBuilder? _optimisticResponse;
+  _i2.GGetAllGameDataBuilder get optimisticResponse =>
+      _$this._optimisticResponse ??= new _i2.GGetAllGameDataBuilder();
+  set optimisticResponse(_i2.GGetAllGameDataBuilder? optimisticResponse) =>
       _$this._optimisticResponse = optimisticResponse;
 
   String? _updateCacheHandlerKey;
@@ -407,11 +527,11 @@ class GgetAllTodosReqBuilder
   _i4.Context? get context => _$this._context;
   set context(_i4.Context? context) => _$this._context = context;
 
-  GgetAllTodosReqBuilder() {
-    GgetAllTodosReq._initializeBuilder(this);
+  GGetAllGameReqBuilder() {
+    GGetAllGameReq._initializeBuilder(this);
   }
 
-  GgetAllTodosReqBuilder get _$this {
+  GGetAllGameReqBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _vars = $v.vars.toBuilder();
@@ -430,27 +550,27 @@ class GgetAllTodosReqBuilder
   }
 
   @override
-  void replace(GgetAllTodosReq other) {
+  void replace(GGetAllGameReq other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GgetAllTodosReq;
+    _$v = other as _$GGetAllGameReq;
   }
 
   @override
-  void update(void Function(GgetAllTodosReqBuilder)? updates) {
+  void update(void Function(GGetAllGameReqBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GgetAllTodosReq build() => _build();
+  GGetAllGameReq build() => _build();
 
-  _$GgetAllTodosReq _build() {
-    _$GgetAllTodosReq _$result;
+  _$GGetAllGameReq _build() {
+    _$GGetAllGameReq _$result;
     try {
       _$result = _$v ??
-          new _$GgetAllTodosReq._(
+          new _$GGetAllGameReq._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GgetAllTodosReq', 'operation'),
+                  operation, r'GGetAllGameReq', 'operation'),
               requestId: requestId,
               updateResult: updateResult,
               optimisticResponse: _optimisticResponse?.build(),
@@ -458,7 +578,7 @@ class GgetAllTodosReqBuilder
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GgetAllTodosReq', 'executeOnListen'),
+                  executeOnListen, r'GGetAllGameReq', 'executeOnListen'),
               context: context);
     } catch (_) {
       late String _$failedField;
@@ -470,7 +590,7 @@ class GgetAllTodosReqBuilder
         _optimisticResponse?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GgetAllTodosReq', _$failedField, e.toString());
+            r'GGetAllGameReq', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -479,18 +599,18 @@ class GgetAllTodosReqBuilder
   }
 }
 
-class _$GAddTodoReq extends GAddTodoReq {
+class _$GAddGameReq extends GAddGameReq {
   @override
-  final _i3.GAddTodoVars vars;
+  final _i3.GAddGameVars vars;
   @override
   final _i4.Operation operation;
   @override
   final String? requestId;
   @override
-  final _i2.GAddTodoData? Function(_i2.GAddTodoData?, _i2.GAddTodoData?)?
+  final _i2.GAddGameData? Function(_i2.GAddGameData?, _i2.GAddGameData?)?
       updateResult;
   @override
-  final _i2.GAddTodoData? optimisticResponse;
+  final _i2.GAddGameData? optimisticResponse;
   @override
   final String? updateCacheHandlerKey;
   @override
@@ -502,10 +622,10 @@ class _$GAddTodoReq extends GAddTodoReq {
   @override
   final _i4.Context? context;
 
-  factory _$GAddTodoReq([void Function(GAddTodoReqBuilder)? updates]) =>
-      (new GAddTodoReqBuilder()..update(updates))._build();
+  factory _$GAddGameReq([void Function(GAddGameReqBuilder)? updates]) =>
+      (new GAddGameReqBuilder()..update(updates))._build();
 
-  _$GAddTodoReq._(
+  _$GAddGameReq._(
       {required this.vars,
       required this.operation,
       this.requestId,
@@ -517,25 +637,25 @@ class _$GAddTodoReq extends GAddTodoReq {
       required this.executeOnListen,
       this.context})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(vars, r'GAddTodoReq', 'vars');
+    BuiltValueNullFieldError.checkNotNull(vars, r'GAddGameReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, r'GAddTodoReq', 'operation');
+        operation, r'GAddGameReq', 'operation');
     BuiltValueNullFieldError.checkNotNull(
-        executeOnListen, r'GAddTodoReq', 'executeOnListen');
+        executeOnListen, r'GAddGameReq', 'executeOnListen');
   }
 
   @override
-  GAddTodoReq rebuild(void Function(GAddTodoReqBuilder) updates) =>
+  GAddGameReq rebuild(void Function(GAddGameReqBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAddTodoReqBuilder toBuilder() => new GAddTodoReqBuilder()..replace(this);
+  GAddGameReqBuilder toBuilder() => new GAddGameReqBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     final dynamic _$dynamicOther = other;
-    return other is GAddTodoReq &&
+    return other is GAddGameReq &&
         vars == other.vars &&
         operation == other.operation &&
         requestId == other.requestId &&
@@ -567,7 +687,7 @@ class _$GAddTodoReq extends GAddTodoReq {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GAddTodoReq')
+    return (newBuiltValueToStringHelper(r'GAddGameReq')
           ..add('vars', vars)
           ..add('operation', operation)
           ..add('requestId', requestId)
@@ -582,13 +702,13 @@ class _$GAddTodoReq extends GAddTodoReq {
   }
 }
 
-class GAddTodoReqBuilder implements Builder<GAddTodoReq, GAddTodoReqBuilder> {
-  _$GAddTodoReq? _$v;
+class GAddGameReqBuilder implements Builder<GAddGameReq, GAddGameReqBuilder> {
+  _$GAddGameReq? _$v;
 
-  _i3.GAddTodoVarsBuilder? _vars;
-  _i3.GAddTodoVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GAddTodoVarsBuilder();
-  set vars(_i3.GAddTodoVarsBuilder? vars) => _$this._vars = vars;
+  _i3.GAddGameVarsBuilder? _vars;
+  _i3.GAddGameVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GAddGameVarsBuilder();
+  set vars(_i3.GAddGameVarsBuilder? vars) => _$this._vars = vars;
 
   _i4.Operation? _operation;
   _i4.Operation? get operation => _$this._operation;
@@ -598,19 +718,19 @@ class GAddTodoReqBuilder implements Builder<GAddTodoReq, GAddTodoReqBuilder> {
   String? get requestId => _$this._requestId;
   set requestId(String? requestId) => _$this._requestId = requestId;
 
-  _i2.GAddTodoData? Function(_i2.GAddTodoData?, _i2.GAddTodoData?)?
+  _i2.GAddGameData? Function(_i2.GAddGameData?, _i2.GAddGameData?)?
       _updateResult;
-  _i2.GAddTodoData? Function(_i2.GAddTodoData?, _i2.GAddTodoData?)?
+  _i2.GAddGameData? Function(_i2.GAddGameData?, _i2.GAddGameData?)?
       get updateResult => _$this._updateResult;
   set updateResult(
-          _i2.GAddTodoData? Function(_i2.GAddTodoData?, _i2.GAddTodoData?)?
+          _i2.GAddGameData? Function(_i2.GAddGameData?, _i2.GAddGameData?)?
               updateResult) =>
       _$this._updateResult = updateResult;
 
-  _i2.GAddTodoDataBuilder? _optimisticResponse;
-  _i2.GAddTodoDataBuilder get optimisticResponse =>
-      _$this._optimisticResponse ??= new _i2.GAddTodoDataBuilder();
-  set optimisticResponse(_i2.GAddTodoDataBuilder? optimisticResponse) =>
+  _i2.GAddGameDataBuilder? _optimisticResponse;
+  _i2.GAddGameDataBuilder get optimisticResponse =>
+      _$this._optimisticResponse ??= new _i2.GAddGameDataBuilder();
+  set optimisticResponse(_i2.GAddGameDataBuilder? optimisticResponse) =>
       _$this._optimisticResponse = optimisticResponse;
 
   String? _updateCacheHandlerKey;
@@ -639,11 +759,11 @@ class GAddTodoReqBuilder implements Builder<GAddTodoReq, GAddTodoReqBuilder> {
   _i4.Context? get context => _$this._context;
   set context(_i4.Context? context) => _$this._context = context;
 
-  GAddTodoReqBuilder() {
-    GAddTodoReq._initializeBuilder(this);
+  GAddGameReqBuilder() {
+    GAddGameReq._initializeBuilder(this);
   }
 
-  GAddTodoReqBuilder get _$this {
+  GAddGameReqBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _vars = $v.vars.toBuilder();
@@ -662,27 +782,27 @@ class GAddTodoReqBuilder implements Builder<GAddTodoReq, GAddTodoReqBuilder> {
   }
 
   @override
-  void replace(GAddTodoReq other) {
+  void replace(GAddGameReq other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GAddTodoReq;
+    _$v = other as _$GAddGameReq;
   }
 
   @override
-  void update(void Function(GAddTodoReqBuilder)? updates) {
+  void update(void Function(GAddGameReqBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GAddTodoReq build() => _build();
+  GAddGameReq build() => _build();
 
-  _$GAddTodoReq _build() {
-    _$GAddTodoReq _$result;
+  _$GAddGameReq _build() {
+    _$GAddGameReq _$result;
     try {
       _$result = _$v ??
-          new _$GAddTodoReq._(
+          new _$GAddGameReq._(
               vars: vars.build(),
               operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GAddTodoReq', 'operation'),
+                  operation, r'GAddGameReq', 'operation'),
               requestId: requestId,
               updateResult: updateResult,
               optimisticResponse: _optimisticResponse?.build(),
@@ -690,7 +810,7 @@ class GAddTodoReqBuilder implements Builder<GAddTodoReq, GAddTodoReqBuilder> {
               updateCacheHandlerContext: updateCacheHandlerContext,
               fetchPolicy: fetchPolicy,
               executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GAddTodoReq', 'executeOnListen'),
+                  executeOnListen, r'GAddGameReq', 'executeOnListen'),
               context: context);
     } catch (_) {
       late String _$failedField;
@@ -702,7 +822,242 @@ class GAddTodoReqBuilder implements Builder<GAddTodoReq, GAddTodoReqBuilder> {
         _optimisticResponse?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GAddTodoReq', _$failedField, e.toString());
+            r'GAddGameReq', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GRemoveGameReq extends GRemoveGameReq {
+  @override
+  final _i3.GRemoveGameVars vars;
+  @override
+  final _i4.Operation operation;
+  @override
+  final String? requestId;
+  @override
+  final _i2.GRemoveGameData? Function(
+      _i2.GRemoveGameData?, _i2.GRemoveGameData?)? updateResult;
+  @override
+  final _i2.GRemoveGameData? optimisticResponse;
+  @override
+  final String? updateCacheHandlerKey;
+  @override
+  final Map<String, dynamic>? updateCacheHandlerContext;
+  @override
+  final _i1.FetchPolicy? fetchPolicy;
+  @override
+  final bool executeOnListen;
+  @override
+  final _i4.Context? context;
+
+  factory _$GRemoveGameReq([void Function(GRemoveGameReqBuilder)? updates]) =>
+      (new GRemoveGameReqBuilder()..update(updates))._build();
+
+  _$GRemoveGameReq._(
+      {required this.vars,
+      required this.operation,
+      this.requestId,
+      this.updateResult,
+      this.optimisticResponse,
+      this.updateCacheHandlerKey,
+      this.updateCacheHandlerContext,
+      this.fetchPolicy,
+      required this.executeOnListen,
+      this.context})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(vars, r'GRemoveGameReq', 'vars');
+    BuiltValueNullFieldError.checkNotNull(
+        operation, r'GRemoveGameReq', 'operation');
+    BuiltValueNullFieldError.checkNotNull(
+        executeOnListen, r'GRemoveGameReq', 'executeOnListen');
+  }
+
+  @override
+  GRemoveGameReq rebuild(void Function(GRemoveGameReqBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GRemoveGameReqBuilder toBuilder() =>
+      new GRemoveGameReqBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    final dynamic _$dynamicOther = other;
+    return other is GRemoveGameReq &&
+        vars == other.vars &&
+        operation == other.operation &&
+        requestId == other.requestId &&
+        updateResult == _$dynamicOther.updateResult &&
+        optimisticResponse == other.optimisticResponse &&
+        updateCacheHandlerKey == other.updateCacheHandlerKey &&
+        updateCacheHandlerContext == other.updateCacheHandlerContext &&
+        fetchPolicy == other.fetchPolicy &&
+        executeOnListen == other.executeOnListen &&
+        context == other.context;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, vars.hashCode);
+    _$hash = $jc(_$hash, operation.hashCode);
+    _$hash = $jc(_$hash, requestId.hashCode);
+    _$hash = $jc(_$hash, updateResult.hashCode);
+    _$hash = $jc(_$hash, optimisticResponse.hashCode);
+    _$hash = $jc(_$hash, updateCacheHandlerKey.hashCode);
+    _$hash = $jc(_$hash, updateCacheHandlerContext.hashCode);
+    _$hash = $jc(_$hash, fetchPolicy.hashCode);
+    _$hash = $jc(_$hash, executeOnListen.hashCode);
+    _$hash = $jc(_$hash, context.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GRemoveGameReq')
+          ..add('vars', vars)
+          ..add('operation', operation)
+          ..add('requestId', requestId)
+          ..add('updateResult', updateResult)
+          ..add('optimisticResponse', optimisticResponse)
+          ..add('updateCacheHandlerKey', updateCacheHandlerKey)
+          ..add('updateCacheHandlerContext', updateCacheHandlerContext)
+          ..add('fetchPolicy', fetchPolicy)
+          ..add('executeOnListen', executeOnListen)
+          ..add('context', context))
+        .toString();
+  }
+}
+
+class GRemoveGameReqBuilder
+    implements Builder<GRemoveGameReq, GRemoveGameReqBuilder> {
+  _$GRemoveGameReq? _$v;
+
+  _i3.GRemoveGameVarsBuilder? _vars;
+  _i3.GRemoveGameVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GRemoveGameVarsBuilder();
+  set vars(_i3.GRemoveGameVarsBuilder? vars) => _$this._vars = vars;
+
+  _i4.Operation? _operation;
+  _i4.Operation? get operation => _$this._operation;
+  set operation(_i4.Operation? operation) => _$this._operation = operation;
+
+  String? _requestId;
+  String? get requestId => _$this._requestId;
+  set requestId(String? requestId) => _$this._requestId = requestId;
+
+  _i2.GRemoveGameData? Function(_i2.GRemoveGameData?, _i2.GRemoveGameData?)?
+      _updateResult;
+  _i2.GRemoveGameData? Function(_i2.GRemoveGameData?, _i2.GRemoveGameData?)?
+      get updateResult => _$this._updateResult;
+  set updateResult(
+          _i2.GRemoveGameData? Function(
+                  _i2.GRemoveGameData?, _i2.GRemoveGameData?)?
+              updateResult) =>
+      _$this._updateResult = updateResult;
+
+  _i2.GRemoveGameDataBuilder? _optimisticResponse;
+  _i2.GRemoveGameDataBuilder get optimisticResponse =>
+      _$this._optimisticResponse ??= new _i2.GRemoveGameDataBuilder();
+  set optimisticResponse(_i2.GRemoveGameDataBuilder? optimisticResponse) =>
+      _$this._optimisticResponse = optimisticResponse;
+
+  String? _updateCacheHandlerKey;
+  String? get updateCacheHandlerKey => _$this._updateCacheHandlerKey;
+  set updateCacheHandlerKey(String? updateCacheHandlerKey) =>
+      _$this._updateCacheHandlerKey = updateCacheHandlerKey;
+
+  Map<String, dynamic>? _updateCacheHandlerContext;
+  Map<String, dynamic>? get updateCacheHandlerContext =>
+      _$this._updateCacheHandlerContext;
+  set updateCacheHandlerContext(
+          Map<String, dynamic>? updateCacheHandlerContext) =>
+      _$this._updateCacheHandlerContext = updateCacheHandlerContext;
+
+  _i1.FetchPolicy? _fetchPolicy;
+  _i1.FetchPolicy? get fetchPolicy => _$this._fetchPolicy;
+  set fetchPolicy(_i1.FetchPolicy? fetchPolicy) =>
+      _$this._fetchPolicy = fetchPolicy;
+
+  bool? _executeOnListen;
+  bool? get executeOnListen => _$this._executeOnListen;
+  set executeOnListen(bool? executeOnListen) =>
+      _$this._executeOnListen = executeOnListen;
+
+  _i4.Context? _context;
+  _i4.Context? get context => _$this._context;
+  set context(_i4.Context? context) => _$this._context = context;
+
+  GRemoveGameReqBuilder() {
+    GRemoveGameReq._initializeBuilder(this);
+  }
+
+  GRemoveGameReqBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _vars = $v.vars.toBuilder();
+      _operation = $v.operation;
+      _requestId = $v.requestId;
+      _updateResult = $v.updateResult;
+      _optimisticResponse = $v.optimisticResponse?.toBuilder();
+      _updateCacheHandlerKey = $v.updateCacheHandlerKey;
+      _updateCacheHandlerContext = $v.updateCacheHandlerContext;
+      _fetchPolicy = $v.fetchPolicy;
+      _executeOnListen = $v.executeOnListen;
+      _context = $v.context;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GRemoveGameReq other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GRemoveGameReq;
+  }
+
+  @override
+  void update(void Function(GRemoveGameReqBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GRemoveGameReq build() => _build();
+
+  _$GRemoveGameReq _build() {
+    _$GRemoveGameReq _$result;
+    try {
+      _$result = _$v ??
+          new _$GRemoveGameReq._(
+              vars: vars.build(),
+              operation: BuiltValueNullFieldError.checkNotNull(
+                  operation, r'GRemoveGameReq', 'operation'),
+              requestId: requestId,
+              updateResult: updateResult,
+              optimisticResponse: _optimisticResponse?.build(),
+              updateCacheHandlerKey: updateCacheHandlerKey,
+              updateCacheHandlerContext: updateCacheHandlerContext,
+              fetchPolicy: fetchPolicy,
+              executeOnListen: BuiltValueNullFieldError.checkNotNull(
+                  executeOnListen, r'GRemoveGameReq', 'executeOnListen'),
+              context: context);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'vars';
+        vars.build();
+
+        _$failedField = 'optimisticResponse';
+        _optimisticResponse?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'GRemoveGameReq', _$failedField, e.toString());
       }
       rethrow;
     }

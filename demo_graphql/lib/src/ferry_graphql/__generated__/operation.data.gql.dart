@@ -10,117 +10,176 @@ import 'package:demo_graphql/src/ferry_graphql/__generated__/serializers.gql.dar
 
 part 'operation.data.gql.g.dart';
 
-abstract class GgetAllTodosData
-    implements Built<GgetAllTodosData, GgetAllTodosDataBuilder> {
-  GgetAllTodosData._();
+abstract class GGetAllGameData
+    implements Built<GGetAllGameData, GGetAllGameDataBuilder> {
+  GGetAllGameData._();
 
-  factory GgetAllTodosData([void Function(GgetAllTodosDataBuilder b) updates]) =
-      _$GgetAllTodosData;
+  factory GGetAllGameData([void Function(GGetAllGameDataBuilder b) updates]) =
+      _$GGetAllGameData;
 
-  static void _initializeBuilder(GgetAllTodosDataBuilder b) =>
-      b..G__typename = 'Query';
+  static void _initializeBuilder(GGetAllGameDataBuilder b) =>
+      b..G__typename = 'RootQueryType';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  BuiltList<GgetAllTodosData_todos?>? get todos;
-  static Serializer<GgetAllTodosData> get serializer =>
-      _$ggetAllTodosDataSerializer;
+  BuiltList<GGetAllGameData_games?>? get games;
+  static Serializer<GGetAllGameData> get serializer =>
+      _$gGetAllGameDataSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GgetAllTodosData.serializer,
+        GGetAllGameData.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GgetAllTodosData? fromJson(Map<String, dynamic> json) =>
+  static GGetAllGameData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GgetAllTodosData.serializer,
+        GGetAllGameData.serializer,
         json,
       );
 }
 
-abstract class GgetAllTodosData_todos
-    implements Built<GgetAllTodosData_todos, GgetAllTodosData_todosBuilder> {
-  GgetAllTodosData_todos._();
+abstract class GGetAllGameData_games
+    implements Built<GGetAllGameData_games, GGetAllGameData_gamesBuilder> {
+  GGetAllGameData_games._();
 
-  factory GgetAllTodosData_todos(
-          [void Function(GgetAllTodosData_todosBuilder b) updates]) =
-      _$GgetAllTodosData_todos;
+  factory GGetAllGameData_games(
+          [void Function(GGetAllGameData_gamesBuilder b) updates]) =
+      _$GGetAllGameData_games;
 
-  static void _initializeBuilder(GgetAllTodosData_todosBuilder b) =>
-      b..G__typename = 'Todo';
+  static void _initializeBuilder(GGetAllGameData_gamesBuilder b) =>
+      b..G__typename = 'Game';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  String get description;
-  String get id;
-  static Serializer<GgetAllTodosData_todos> get serializer =>
-      _$ggetAllTodosDataTodosSerializer;
+  String? get id;
+  String? get name;
+  static Serializer<GGetAllGameData_games> get serializer =>
+      _$gGetAllGameDataGamesSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GgetAllTodosData_todos.serializer,
+        GGetAllGameData_games.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GgetAllTodosData_todos? fromJson(Map<String, dynamic> json) =>
+  static GGetAllGameData_games? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GgetAllTodosData_todos.serializer,
+        GGetAllGameData_games.serializer,
         json,
       );
 }
 
-abstract class GAddTodoData
-    implements Built<GAddTodoData, GAddTodoDataBuilder> {
-  GAddTodoData._();
+abstract class GAddGameData
+    implements Built<GAddGameData, GAddGameDataBuilder> {
+  GAddGameData._();
 
-  factory GAddTodoData([void Function(GAddTodoDataBuilder b) updates]) =
-      _$GAddTodoData;
+  factory GAddGameData([void Function(GAddGameDataBuilder b) updates]) =
+      _$GAddGameData;
 
-  static void _initializeBuilder(GAddTodoDataBuilder b) =>
+  static void _initializeBuilder(GAddGameDataBuilder b) =>
       b..G__typename = 'Mutation';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GAddTodoData_addTodo? get addTodo;
-  static Serializer<GAddTodoData> get serializer => _$gAddTodoDataSerializer;
+  GAddGameData_CreateGame? get CreateGame;
+  static Serializer<GAddGameData> get serializer => _$gAddGameDataSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAddTodoData.serializer,
+        GAddGameData.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GAddTodoData? fromJson(Map<String, dynamic> json) =>
+  static GAddGameData? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GAddTodoData.serializer,
+        GAddGameData.serializer,
         json,
       );
 }
 
-abstract class GAddTodoData_addTodo
-    implements Built<GAddTodoData_addTodo, GAddTodoData_addTodoBuilder> {
-  GAddTodoData_addTodo._();
+abstract class GAddGameData_CreateGame
+    implements Built<GAddGameData_CreateGame, GAddGameData_CreateGameBuilder> {
+  GAddGameData_CreateGame._();
 
-  factory GAddTodoData_addTodo(
-          [void Function(GAddTodoData_addTodoBuilder b) updates]) =
-      _$GAddTodoData_addTodo;
+  factory GAddGameData_CreateGame(
+          [void Function(GAddGameData_CreateGameBuilder b) updates]) =
+      _$GAddGameData_CreateGame;
 
-  static void _initializeBuilder(GAddTodoData_addTodoBuilder b) =>
-      b..G__typename = 'Todo';
+  static void _initializeBuilder(GAddGameData_CreateGameBuilder b) =>
+      b..G__typename = 'Game';
 
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  String get description;
-  String get id;
-  static Serializer<GAddTodoData_addTodo> get serializer =>
-      _$gAddTodoDataAddTodoSerializer;
+  String? get id;
+  String? get name;
+  static Serializer<GAddGameData_CreateGame> get serializer =>
+      _$gAddGameDataCreateGameSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAddTodoData_addTodo.serializer,
+        GAddGameData_CreateGame.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GAddTodoData_addTodo? fromJson(Map<String, dynamic> json) =>
+  static GAddGameData_CreateGame? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GAddTodoData_addTodo.serializer,
+        GAddGameData_CreateGame.serializer,
+        json,
+      );
+}
+
+abstract class GRemoveGameData
+    implements Built<GRemoveGameData, GRemoveGameDataBuilder> {
+  GRemoveGameData._();
+
+  factory GRemoveGameData([void Function(GRemoveGameDataBuilder b) updates]) =
+      _$GRemoveGameData;
+
+  static void _initializeBuilder(GRemoveGameDataBuilder b) =>
+      b..G__typename = 'Mutation';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  GRemoveGameData_RemoveGame? get RemoveGame;
+  static Serializer<GRemoveGameData> get serializer =>
+      _$gRemoveGameDataSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRemoveGameData.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GRemoveGameData? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GRemoveGameData.serializer,
+        json,
+      );
+}
+
+abstract class GRemoveGameData_RemoveGame
+    implements
+        Built<GRemoveGameData_RemoveGame, GRemoveGameData_RemoveGameBuilder> {
+  GRemoveGameData_RemoveGame._();
+
+  factory GRemoveGameData_RemoveGame(
+          [void Function(GRemoveGameData_RemoveGameBuilder b) updates]) =
+      _$GRemoveGameData_RemoveGame;
+
+  static void _initializeBuilder(GRemoveGameData_RemoveGameBuilder b) =>
+      b..G__typename = 'Game';
+
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String? get id;
+  String? get name;
+  static Serializer<GRemoveGameData_RemoveGame> get serializer =>
+      _$gRemoveGameDataRemoveGameSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRemoveGameData_RemoveGame.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GRemoveGameData_RemoveGame? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GRemoveGameData_RemoveGame.serializer,
         json,
       );
 }

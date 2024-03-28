@@ -1,20 +1,20 @@
-query getAllTodos {
-  todos {
-    description
+query GetAllGame {
+  games {
     id
+    name
   }
 }
 
-mutation AddTodo($description: String!) {
-  addTodo(description: $description) {
-    description
+mutation AddGame($name: String!, $price: Int!) {
+  CreateGame(name: $name, price: $price, typeID: "1", publisherID: "1") {
     id
+    name
   }
 }
 
-mutation AddTodo($description: String!) {
-  addTodo(description: $description) {
-    description
+mutation RemoveGame($game_id: String!) {
+  RemoveGame(id: $game_id) {
     id
+    name
   }
 }

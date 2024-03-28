@@ -17,24 +17,24 @@ import 'package:gql_exec/gql_exec.dart' as _i4;
 
 part 'operation.req.gql.g.dart';
 
-abstract class GgetAllTodosReq
+abstract class GGetAllGameReq
     implements
-        Built<GgetAllTodosReq, GgetAllTodosReqBuilder>,
-        _i1.OperationRequest<_i2.GgetAllTodosData, _i3.GgetAllTodosVars> {
-  GgetAllTodosReq._();
+        Built<GGetAllGameReq, GGetAllGameReqBuilder>,
+        _i1.OperationRequest<_i2.GGetAllGameData, _i3.GGetAllGameVars> {
+  GGetAllGameReq._();
 
-  factory GgetAllTodosReq([void Function(GgetAllTodosReqBuilder b) updates]) =
-      _$GgetAllTodosReq;
+  factory GGetAllGameReq([void Function(GGetAllGameReqBuilder b) updates]) =
+      _$GGetAllGameReq;
 
-  static void _initializeBuilder(GgetAllTodosReqBuilder b) => b
+  static void _initializeBuilder(GGetAllGameReqBuilder b) => b
     ..operation = _i4.Operation(
       document: _i5.document,
-      operationName: 'getAllTodos',
+      operationName: 'GetAllGame',
     )
     ..executeOnListen = true;
 
   @override
-  _i3.GgetAllTodosVars get vars;
+  _i3.GGetAllGameVars get vars;
   @override
   _i4.Operation get operation;
   @override
@@ -48,12 +48,12 @@ abstract class GgetAllTodosReq
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GgetAllTodosData? Function(
-    _i2.GgetAllTodosData?,
-    _i2.GgetAllTodosData?,
+  _i2.GGetAllGameData? Function(
+    _i2.GGetAllGameData?,
+    _i2.GGetAllGameData?,
   )? get updateResult;
   @override
-  _i2.GgetAllTodosData? get optimisticResponse;
+  _i2.GGetAllGameData? get optimisticResponse;
   @override
   String? get updateCacheHandlerKey;
   @override
@@ -66,53 +66,53 @@ abstract class GgetAllTodosReq
   @BuiltValueField(serialize: false)
   _i4.Context? get context;
   @override
-  _i2.GgetAllTodosData? parseData(Map<String, dynamic> json) =>
-      _i2.GgetAllTodosData.fromJson(json);
+  _i2.GGetAllGameData? parseData(Map<String, dynamic> json) =>
+      _i2.GGetAllGameData.fromJson(json);
 
   @override
   Map<String, dynamic> varsToJson() => vars.toJson();
 
   @override
-  Map<String, dynamic> dataToJson(_i2.GgetAllTodosData data) => data.toJson();
+  Map<String, dynamic> dataToJson(_i2.GGetAllGameData data) => data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GgetAllTodosData, _i3.GgetAllTodosVars>
+  _i1.OperationRequest<_i2.GGetAllGameData, _i3.GGetAllGameVars>
       transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
           this.rebuild((b) => b..operation = transform(operation));
 
-  static Serializer<GgetAllTodosReq> get serializer =>
-      _$ggetAllTodosReqSerializer;
+  static Serializer<GGetAllGameReq> get serializer =>
+      _$gGetAllGameReqSerializer;
 
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GgetAllTodosReq.serializer,
+        GGetAllGameReq.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GgetAllTodosReq? fromJson(Map<String, dynamic> json) =>
+  static GGetAllGameReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
-        GgetAllTodosReq.serializer,
+        GGetAllGameReq.serializer,
         json,
       );
 }
 
-abstract class GAddTodoReq
+abstract class GAddGameReq
     implements
-        Built<GAddTodoReq, GAddTodoReqBuilder>,
-        _i1.OperationRequest<_i2.GAddTodoData, _i3.GAddTodoVars> {
-  GAddTodoReq._();
+        Built<GAddGameReq, GAddGameReqBuilder>,
+        _i1.OperationRequest<_i2.GAddGameData, _i3.GAddGameVars> {
+  GAddGameReq._();
 
-  factory GAddTodoReq([void Function(GAddTodoReqBuilder b) updates]) =
-      _$GAddTodoReq;
+  factory GAddGameReq([void Function(GAddGameReqBuilder b) updates]) =
+      _$GAddGameReq;
 
-  static void _initializeBuilder(GAddTodoReqBuilder b) => b
+  static void _initializeBuilder(GAddGameReqBuilder b) => b
     ..operation = _i4.Operation(
       document: _i5.document,
-      operationName: 'AddTodo',
+      operationName: 'AddGame',
     )
     ..executeOnListen = true;
 
   @override
-  _i3.GAddTodoVars get vars;
+  _i3.GAddGameVars get vars;
   @override
   _i4.Operation get operation;
   @override
@@ -126,12 +126,12 @@ abstract class GAddTodoReq
   String? get requestId;
   @override
   @BuiltValueField(serialize: false)
-  _i2.GAddTodoData? Function(
-    _i2.GAddTodoData?,
-    _i2.GAddTodoData?,
+  _i2.GAddGameData? Function(
+    _i2.GAddGameData?,
+    _i2.GAddGameData?,
   )? get updateResult;
   @override
-  _i2.GAddTodoData? get optimisticResponse;
+  _i2.GAddGameData? get optimisticResponse;
   @override
   String? get updateCacheHandlerKey;
   @override
@@ -144,30 +144,108 @@ abstract class GAddTodoReq
   @BuiltValueField(serialize: false)
   _i4.Context? get context;
   @override
-  _i2.GAddTodoData? parseData(Map<String, dynamic> json) =>
-      _i2.GAddTodoData.fromJson(json);
+  _i2.GAddGameData? parseData(Map<String, dynamic> json) =>
+      _i2.GAddGameData.fromJson(json);
 
   @override
   Map<String, dynamic> varsToJson() => vars.toJson();
 
   @override
-  Map<String, dynamic> dataToJson(_i2.GAddTodoData data) => data.toJson();
+  Map<String, dynamic> dataToJson(_i2.GAddGameData data) => data.toJson();
 
   @override
-  _i1.OperationRequest<_i2.GAddTodoData, _i3.GAddTodoVars> transformOperation(
+  _i1.OperationRequest<_i2.GAddGameData, _i3.GAddGameVars> transformOperation(
           _i4.Operation Function(_i4.Operation) transform) =>
       this.rebuild((b) => b..operation = transform(operation));
 
-  static Serializer<GAddTodoReq> get serializer => _$gAddTodoReqSerializer;
+  static Serializer<GAddGameReq> get serializer => _$gAddGameReqSerializer;
 
   Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
-        GAddTodoReq.serializer,
+        GAddGameReq.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GAddTodoReq? fromJson(Map<String, dynamic> json) =>
+  static GAddGameReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(
-        GAddTodoReq.serializer,
+        GAddGameReq.serializer,
+        json,
+      );
+}
+
+abstract class GRemoveGameReq
+    implements
+        Built<GRemoveGameReq, GRemoveGameReqBuilder>,
+        _i1.OperationRequest<_i2.GRemoveGameData, _i3.GRemoveGameVars> {
+  GRemoveGameReq._();
+
+  factory GRemoveGameReq([void Function(GRemoveGameReqBuilder b) updates]) =
+      _$GRemoveGameReq;
+
+  static void _initializeBuilder(GRemoveGameReqBuilder b) => b
+    ..operation = _i4.Operation(
+      document: _i5.document,
+      operationName: 'RemoveGame',
+    )
+    ..executeOnListen = true;
+
+  @override
+  _i3.GRemoveGameVars get vars;
+  @override
+  _i4.Operation get operation;
+  @override
+  _i4.Request get execRequest => _i4.Request(
+        operation: operation,
+        variables: vars.toJson(),
+        context: context ?? const _i4.Context(),
+      );
+
+  @override
+  String? get requestId;
+  @override
+  @BuiltValueField(serialize: false)
+  _i2.GRemoveGameData? Function(
+    _i2.GRemoveGameData?,
+    _i2.GRemoveGameData?,
+  )? get updateResult;
+  @override
+  _i2.GRemoveGameData? get optimisticResponse;
+  @override
+  String? get updateCacheHandlerKey;
+  @override
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  @override
+  _i1.FetchPolicy? get fetchPolicy;
+  @override
+  bool get executeOnListen;
+  @override
+  @BuiltValueField(serialize: false)
+  _i4.Context? get context;
+  @override
+  _i2.GRemoveGameData? parseData(Map<String, dynamic> json) =>
+      _i2.GRemoveGameData.fromJson(json);
+
+  @override
+  Map<String, dynamic> varsToJson() => vars.toJson();
+
+  @override
+  Map<String, dynamic> dataToJson(_i2.GRemoveGameData data) => data.toJson();
+
+  @override
+  _i1.OperationRequest<_i2.GRemoveGameData, _i3.GRemoveGameVars>
+      transformOperation(_i4.Operation Function(_i4.Operation) transform) =>
+          this.rebuild((b) => b..operation = transform(operation));
+
+  static Serializer<GRemoveGameReq> get serializer =>
+      _$gRemoveGameReqSerializer;
+
+  Map<String, dynamic> toJson() => (_i6.serializers.serializeWith(
+        GRemoveGameReq.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GRemoveGameReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(
+        GRemoveGameReq.serializer,
         json,
       );
 }

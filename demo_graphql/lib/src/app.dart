@@ -1,4 +1,4 @@
-import 'package:demo_graphql/src/todo/todolist.dart';
+import 'package:demo_graphql/src/games/home_screen.dart';
 import 'package:flutter/material.dart';
 
 /// The Widget that configures your application.
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         return MaterialPageRoute<void>(
           settings: routeSettings,
           builder: (BuildContext context) {
-            return TodoListScreen();
+            return HomeScreen();
           },
         );
       },

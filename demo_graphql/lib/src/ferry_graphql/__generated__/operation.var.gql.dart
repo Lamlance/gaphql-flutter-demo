@@ -9,46 +9,70 @@ import 'package:demo_graphql/src/ferry_graphql/__generated__/serializers.gql.dar
 
 part 'operation.var.gql.g.dart';
 
-abstract class GgetAllTodosVars
-    implements Built<GgetAllTodosVars, GgetAllTodosVarsBuilder> {
-  GgetAllTodosVars._();
+abstract class GGetAllGameVars
+    implements Built<GGetAllGameVars, GGetAllGameVarsBuilder> {
+  GGetAllGameVars._();
 
-  factory GgetAllTodosVars([void Function(GgetAllTodosVarsBuilder b) updates]) =
-      _$GgetAllTodosVars;
+  factory GGetAllGameVars([void Function(GGetAllGameVarsBuilder b) updates]) =
+      _$GGetAllGameVars;
 
-  static Serializer<GgetAllTodosVars> get serializer =>
-      _$ggetAllTodosVarsSerializer;
+  static Serializer<GGetAllGameVars> get serializer =>
+      _$gGetAllGameVarsSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GgetAllTodosVars.serializer,
+        GGetAllGameVars.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GgetAllTodosVars? fromJson(Map<String, dynamic> json) =>
+  static GGetAllGameVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GgetAllTodosVars.serializer,
+        GGetAllGameVars.serializer,
         json,
       );
 }
 
-abstract class GAddTodoVars
-    implements Built<GAddTodoVars, GAddTodoVarsBuilder> {
-  GAddTodoVars._();
+abstract class GAddGameVars
+    implements Built<GAddGameVars, GAddGameVarsBuilder> {
+  GAddGameVars._();
 
-  factory GAddTodoVars([void Function(GAddTodoVarsBuilder b) updates]) =
-      _$GAddTodoVars;
+  factory GAddGameVars([void Function(GAddGameVarsBuilder b) updates]) =
+      _$GAddGameVars;
 
-  String get description;
-  static Serializer<GAddTodoVars> get serializer => _$gAddTodoVarsSerializer;
+  String get name;
+  int get price;
+  static Serializer<GAddGameVars> get serializer => _$gAddGameVarsSerializer;
 
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
-        GAddTodoVars.serializer,
+        GAddGameVars.serializer,
         this,
       ) as Map<String, dynamic>);
 
-  static GAddTodoVars? fromJson(Map<String, dynamic> json) =>
+  static GAddGameVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
-        GAddTodoVars.serializer,
+        GAddGameVars.serializer,
+        json,
+      );
+}
+
+abstract class GRemoveGameVars
+    implements Built<GRemoveGameVars, GRemoveGameVarsBuilder> {
+  GRemoveGameVars._();
+
+  factory GRemoveGameVars([void Function(GRemoveGameVarsBuilder b) updates]) =
+      _$GRemoveGameVars;
+
+  String get game_id;
+  static Serializer<GRemoveGameVars> get serializer =>
+      _$gRemoveGameVarsSerializer;
+
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRemoveGameVars.serializer,
+        this,
+      ) as Map<String, dynamic>);
+
+  static GRemoveGameVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GRemoveGameVars.serializer,
         json,
       );
 }

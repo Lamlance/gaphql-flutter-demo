@@ -8,26 +8,28 @@ import 'package:demo_graphql/src/ferry_graphql/__generated__/operation.data.gql.
 
 export 'package:demo_graphql/src/ferry_graphql/__generated__/operation.data.gql.dart';
 
-class TodoClient {
+class GamesClient {
   late HttpLink _link;
   late Client _client;
 
-  TodoClient({String graphqlEndpoint = "http://10.0.2.2:4000"}) {
+  GamesClient({String graphqlEndpoint = "http://10.0.2.2:4000/graphql"}) {
     _link = HttpLink(graphqlEndpoint);
     _client = Client(link: _link);
   }
 
   void getAllTodo(
-      {required void Function(List<GgetAllTodosData_todos?>?) listener}) {
-    _client.request(GgetAllTodosReq()).listen((event) {
+      {required void Function(List<GGetAllGameData_games?>?) listener}) {
+    _client
+        .request(
+            GGetAllGameReq((b) => b..fetchPolicy = FetchPolicy.CacheAndNetwork))
+        .listen((event) {
       event.graphqlErrors?.forEach((e) {
         log(e.message);
       });
-      MemoryStore()
-      if (event.data?.todos == null) {
+      if (event.data?.games == null) {
         return listener(null);
       }
-      return listener(event.data!.todos!.toList());
+      return listener(event.data!.games!.toList());
     });
   }
 }
