@@ -3,49 +3,50 @@ var _lodash = require('lodash');
 
 //some dummy data for test
 var gamesData = [
-    {id: '1', name: 'Call of Duty', price: 60, typeID: '1', publisherID: '1'},
-    {id: '2', name: 'GTA V', price: 50, typeID: '2', publisherID: '2'},
-    {id: '3', name: 'The Sims 4', price: 45, typeID: '3', publisherID: '3'},
-    {id: '4', name: 'FIFA 21', price: 55, typeID: '4', publisherID: '3'},
-    {id: '5', name: 'Minecraft', price: 30, typeID: '5', publisherID: '4'},
-    {id: '6', name: 'Red Dead Redemption 2', price: 55, typeID: '2', publisherID: '2'},
-    {id: '7', name: 'Assassin\'s Creed Valhalla', price: 60, typeID: '2', publisherID: '5'},
-    {id: '8', name: 'Cyberpunk 2077', price: 60, typeID: '6', publisherID: '6'},
-    {id: '9', name: 'Overwatch', price: 40, typeID: '1', publisherID: '7'},
-    {id: '10', name: 'Fortnite', price: 0, typeID: '15', publisherID: '8'},
-    {id: '11', name: 'Rocket League', price: 20, typeID: '4', publisherID: '9'},
-    {id: '12', name: 'League of Legends', price: 0, typeID: '16', publisherID: '10'},
-    {id: '13', name: 'Among Us', price: 5, typeID: '15', publisherID: '11'},
-    {id: '14', name: 'Apex Legends', price: 0, typeID: '15', publisherID: '3'},
-    {id: '15', name: 'Valorant', price: 0, typeID: '1', publisherID: '10'},
-    {id: '16', name: 'The Legend of Zelda: Breath of the Wild', price: 60, typeID: '2', publisherID: '12'},
-    {id: '17', name: 'Super Mario Odyssey', price: 60, typeID: '9', publisherID: '12'},
-    {id: '18', name: 'Death Stranding', price: 40, typeID: '2', publisherID: '13'},
-    {id: '19', name: 'Persona 5', price: 40, typeID: '6', publisherID: '14'},
-    {id: '20', name: 'The Witcher 3: Wild Hunt', price: 40, typeID: '6', publisherID: '6'},
-    {id: '21', name: 'Halo Infinite', price: 60, typeID: '1', publisherID: '15'},
-    {id: '22', name: 'God of War', price: 50, typeID: '2', publisherID: '16'},
-    {id: '23', name: 'Forza Horizon 5', price: 60, typeID: '20', publisherID: '15'},
-    {id: '24', name: 'Battlefield 2042', price: 60, typeID: '1', publisherID: '3'},
-    {id: '25', name: 'Madden NFL 22', price: 60, typeID: '4', publisherID: '3'},
-    {id: '26', name: 'Rainbow Six Siege', price: 20, typeID: '1', publisherID: '5'},
-    {id: '27', name: 'Mortal Kombat 11', price: 40, typeID: '10', publisherID: '17'},
-    {id: '28', name: 'Horizon Zero Dawn', price: 40, typeID: '2', publisherID: '16'},
-    {id: '29', name: 'Final Fantasy VII Remake', price: 60, typeID: '6', publisherID: '16'},
-    {id: '30', name: 'Splatoon 2', price: 50, typeID: '1', publisherID: '12'},
-    {id: '31', name: 'The Last of Us Part II', price: 60, typeID: '2', publisherID: '15'},
-    {id: '32', name: 'Far Cry 6', price: 60, typeID: '7', publisherID: '5'},
-    {id: '33', name: 'Resident Evil Village', price: 60, typeID: '11', publisherID: '17'},
-    {id: '34', name: 'Hitman 3', price: 60, typeID: '8', publisherID: '7'},
-    {id: '35', name: 'NBA 2K22', price: 60, typeID: '4', publisherID: '3'},
-    {id: '36', name: 'Assassin\'s Creed Odyssey', price: 50, typeID: '2', publisherID: '5'},
-    {id: '37', name: 'Doom Eternal', price: 50, typeID: '1', publisherID: '1'},
-    {id: '38', name: 'Farming Simulator 22', price: 40, typeID: '3', publisherID: '7'},
-    {id: '39', name: 'Resident Evil 3 Remake', price: 50, typeID: '11', publisherID: '17'},
-    {id: '40', name: 'Sekiro: Shadows Die Twice', price: 60, typeID: '2', publisherID: '12'},
-    {id: '41', name: 'Terraria', price: 10, typeID: '5', publisherID: '4'},
-    {id: '42', name:'Roblox', price: 0, typeID: '5', publisherID: '4'},
+    {id: '1', name: 'Call of Duty', price: 60, typeID: ['1', '21'], publisherID: '1'},
+    {id: '2', name: 'GTA V', price: 50, typeID: ['2', '16', '17'], publisherID: '2'},
+    {id: '3', name: 'The Sims 4', price: 45, typeID: ['3', '14'], publisherID: '3'},
+    {id: '4', name: 'FIFA 21', price: 55, typeID: ['4', '15'], publisherID: '3'},
+    {id: '5', name: 'Minecraft', price: 30, typeID: ['5', '17'], publisherID: '4'},
+    {id: '6', name: 'Red Dead Redemption 2', price: 55, typeID: ['2', '16'], publisherID: '2'},
+    {id: '7', name: 'Assassin\'s Creed Valhalla', price: 60, typeID: ['2', '17'], publisherID: '5'},
+    {id: '8', name: 'Cyberpunk 2077', price: 60, typeID: ['6', '22'], publisherID: '6'},
+    {id: '9', name: 'Overwatch', price: 40, typeID: ['1', '17'], publisherID: '7'},
+    {id: '10', name: 'Fortnite', price: 0, typeID: ['15', '17'], publisherID: '8'},
+    {id: '11', name: 'Rocket League', price: 20, typeID: ['4', '20'], publisherID: '9'},
+    {id: '12', name: 'League of Legends', price: 0, typeID: ['16', '29'], publisherID: '10'},
+    {id: '13', name: 'Among Us', price: 5, typeID: ['15', '28'], publisherID: '11'},
+    {id: '14', name: 'Apex Legends', price: 0, typeID: ['15', '17'], publisherID: '3'},
+    {id: '15', name: 'Valorant', price: 0, typeID: ['1', '22'], publisherID: '10'},
+    {id: '16', name: 'The Legend of Zelda: Breath of the Wild', price: 60, typeID: ['2', '9', '16'], publisherID: '12'},
+    {id: '17', name: 'Super Mario Odyssey', price: 60, typeID: ['9', '17'], publisherID: '12'},
+    {id: '18', name: 'Death Stranding', price: 40, typeID: ['2', '8'], publisherID: '13'},
+    {id: '19', name: 'Persona 5', price: 40, typeID: ['6', '16'], publisherID: '14'},
+    {id: '20', name: 'The Witcher 3: Wild Hunt', price: 40, typeID: ['6', '17'], publisherID: '6'},
+    {id: '21', name: 'Halo Infinite', price: 60, typeID: ['1', '17'], publisherID: '15'},
+    {id: '22', name: 'God of War', price: 50, typeID: ['2', '9'], publisherID: '16'},
+    {id: '23', name: 'Forza Horizon 5', price: 60, typeID: ['20', '17'], publisherID: '15'},
+    {id: '24', name: 'Battlefield 2042', price: 60, typeID: ['1', '17'], publisherID: '3'},
+    {id: '25', name: 'Madden NFL 22', price: 60, typeID: ['4', '17'], publisherID: '3'},
+    {id: '26', name: 'Rainbow Six Siege', price: 20, typeID: ['1', '23'], publisherID: '5'},
+    {id: '27', name: 'Mortal Kombat 11', price: 40, typeID: ['10', '17'], publisherID: '17'},
+    {id: '28', name: 'Horizon Zero Dawn', price: 40, typeID: ['2', '17'], publisherID: '16'},
+    {id: '29', name: 'Final Fantasy VII Remake', price: 60, typeID: ['6', '16'], publisherID: '16'},
+    {id: '30', name: 'Splatoon 2', price: 50, typeID: ['1', '17'], publisherID: '12'},
+    {id: '31', name: 'The Last of Us Part II', price: 60, typeID: ['2', '17'], publisherID: '15'},
+    {id: '32', name: 'Far Cry 6', price: 60, typeID: ['7', '17'], publisherID: '5'},
+    {id: '33', name: 'Resident Evil Village', price: 60, typeID: ['11', '17'], publisherID: '17'},
+    {id: '34', name: 'Hitman 3', price: 60, typeID: ['8', '17'], publisherID: '7'},
+    {id: '35', name: 'NBA 2K22', price: 60, typeID: ['4', '17'], publisherID: '3'},
+    {id: '36', name: 'Assassin\'s Creed Odyssey', price: 50, typeID: ['2', '17'], publisherID: '5'},
+    {id: '37', name: 'Doom Eternal', price: 50, typeID: ['1', '17'], publisherID: '1'},
+    {id: '38', name: 'Farming Simulator 22', price: 40, typeID: ['3', '17'], publisherID: '7'},
+    {id: '39', name: 'Resident Evil 3 Remake', price: 50, typeID: ['11', '17'], publisherID: '17'},
+    {id: '40', name: 'Sekiro: Shadows Die Twice', price: 60, typeID: ['2', '22'], publisherID: '12'},
+    {id: '41', name: 'Terraria', price: 10, typeID: ['5', '17'], publisherID: '4'},
+    {id: '42', name: 'Roblox', price: 0, typeID: ['5', '15', '17'], publisherID: '4'},
 ];
+
 
 
 
@@ -138,6 +139,14 @@ const Game = new graphql.GraphQLObjectType({
             resolve(parent, args){
                 return _lodash.find(typeGamesData, {id_type: parent.typeID});
             }
+        },
+        game_types:{
+            type: new GraphQLList(GameType),
+            resolve(parent, args){
+                return _lodash.filter(typeGamesData, (typeGame) => {
+                    return parent.typeID.includes(typeGame.id_type);
+                });
+            }
         }
     }),
 });
@@ -149,14 +158,14 @@ const GameType = new graphql.GraphQLObjectType({
         id_type: {type: GraphQLString},
         type_name: {type: GraphQLString},
         description: {type: GraphQLString},
-        games:{
+        game:{
             type: new GraphQLList(Game),
             resolve(parent, args){
                 return _lodash.filter(gamesData, {typeID: parent.id_type});
             },
         },
 
-        publishers:{
+        publisher:{
             type: new GraphQLList(Publisher),
             resolve(parent, args){
                 return _lodash.filter(publishersData, (publisher) => {
@@ -175,6 +184,20 @@ const Publisher = new graphql.GraphQLObjectType({
         publisher_name: {type: GraphQLString},
         location: {type: GraphQLString},
         since: {type: GraphQLInt},
+        game:{
+            type: new GraphQLList(Game),
+            resolve(parent, args){
+                return _lodash.filter(gamesData, {publisherID: parent.id_publisher});
+            },
+        },
+        game_type:{
+            type: new GraphQLList(GameType),
+            resolve(parent, args){
+                return _lodash.filter(typeGamesData, (typeGame) => {
+                    return parent.gameTypeID.includes(typeGame.id_type);
+                });
+            },
+        }
     }),
 });
 
@@ -191,11 +214,24 @@ const RootQuery = new GraphQLObjectType({
             }
         },
 
+        games: {type: new GraphQLList(Game),
+            resolve(parent, args){
+                return gamesData;
+            }
+        },
+
         typeGame: {
             type: GameType,
             args: {id_type: {type: GraphQLString}},
             resolve(parent, args){
                 return _lodash.find(typeGamesData, {id_type: args.id_type});
+            }
+        },
+
+        typeGames: {
+            type: new GraphQLList(GameType),
+            resolve(parent, args){
+                return typeGamesData;
             }
         },
 
@@ -205,10 +241,83 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args){
                 return _lodash.find(publishersData, {id_publisher: args.id_publisher});
             }
+        },
+
+        publishers: {
+            type: new GraphQLList(Publisher),
+            resolve(parent, args){
+                return publishersData;
+            }
+        }
+    }
+});
+
+//Mutation
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        CreateGame: {
+            type: Game,
+            args: {
+                //id: {type: GraphQLString},
+                name: {type: GraphQLString},
+                price: {type: GraphQLInt},
+                typeID: {type: GraphQLString},
+                publisherID: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                let game = {
+                    name: args.name,
+                    price: args.price,
+                    typeID: args.typeID,
+                    publisherID: args.publisherID
+                };
+                //gamesData.push(game);
+                return game;
+            }
+        },
+
+        CreateTypeGame: {
+            type: GameType,
+            args: {
+                //id_type: {type: GraphQLString},
+                type_name: {type: GraphQLString},
+                description: {type: GraphQLString},
+                gameID: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                let typeGame = {
+                    type_name: args.type_name,
+                    description: args.description
+                };
+                //typeGamesData.push(typeGame);
+                return typeGame;
+            }
+        },
+
+        CreatePublisher: {
+            type: Publisher,
+            args: {
+                //id_publisher: {type: GraphQLString},
+                publisher_name: {type: GraphQLString},
+                location: {type: GraphQLString},
+                since: {type: GraphQLInt},
+                gameID: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                let publisher = {
+                    publisher_name: args.publisher_name,
+                    location: args.location,
+                    since: args.since
+                };
+                //publishersData.push(publisher);
+                return publisher;
+            }
         }
     }
 });
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 });
