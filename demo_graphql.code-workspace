@@ -9,6 +9,9 @@
     {
       "name": "graphql",
       "path": "."
+    },
+    {
+      "path": "demo_flutter_graphql"
     }
   ],
   "settings": {}
