@@ -327,6 +327,7 @@ const Mutation = new GraphQLObjectType({
             }
         },
 
+        //Create type of game
         CreateTypeGame: {
             type: GameType,
             args: {
@@ -345,6 +346,30 @@ const Mutation = new GraphQLObjectType({
             }
         },
 
+        //Update type of game
+        UpdateTypeGame: {
+            type: GameType,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)},
+                type_name: {type: GraphQLString},
+                description: {type: GraphQLString},
+                gameID: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                return updateTypeGame = GTypeGame.findByIdAndUpdate(
+                    args.id,
+                    {
+                        $set: {
+                            type_name: args.type_name,
+                            description: args.description
+                        }
+                    },
+                    {new: true}
+                );
+            }
+        },
+
+        //Create publisher
         CreatePublisher: {
             type: Publisher,
             args: {
@@ -362,6 +387,31 @@ const Mutation = new GraphQLObjectType({
                 });
                 //publishersData.push(publisher);
                 return publisher.save();
+            }
+        },
+
+        //Update publisher
+        UpdatePublisher: {
+            type: Publisher,
+            args: {
+                id: {type: new GraphQLNonNull(GraphQLString)},
+                publisher_name: {type: GraphQLString},
+                location: {type: GraphQLString},
+                since: {type: GraphQLInt},
+                gameID: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                return updatePublisher = GPublisher.findByIdAndUpdate(
+                    args.id,
+                    {
+                        $set: {
+                            publisher_name: args.publisher_name,
+                            location: args.location,
+                            since: args.since
+                        }
+                    },
+                    {new: true}
+                );
             }
         }
     }
