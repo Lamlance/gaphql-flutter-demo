@@ -20,9 +20,12 @@ class _AddGamePageState extends State<AddGamePage> {
 
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
+  final _typeGameController = TextEditingController();
   final _typeGameTitleController = TextEditingController();
   final _typeGameDescriptionController = TextEditingController();
   final _publisherController = TextEditingController();
+  final _locationController = TextEditingController();
+  final _sinceController = TextEditingController();
 
   bool _isSaving = false;
 
@@ -157,14 +160,15 @@ class _AddGamePageState extends State<AddGamePage> {
                                     });
                                     runMutation({
                                       "name": _nameController.text.trim(),
-                                      "profession":
+                                      "typeGame": _typeGameController.text.trim(),
+                                      "publisher":
                                           _publisherController.text.trim(),
-                                      "age":
+                                      "price":
                                           int.parse(_typeGameTitleController.text.trim())
                                     });
                                     _nameController.clear();
                                     _publisherController.clear();
-                                    _typeGameTitleController.clear();
+                                    _typeGameController.clear();
                                   }
                                 },
                                 child: Padding(
@@ -222,7 +226,7 @@ class _AddGamePageState extends State<AddGamePage> {
                                       borderSide: BorderSide())),
                               validator: (v) {
                                 if (v!.length == 0) {
-                                  return "Description cannot be empty";
+                                  return "Type game cannot be empty";
                                 } else {
                                   return null;
                                 }
@@ -246,10 +250,10 @@ class _AddGamePageState extends State<AddGamePage> {
                                           _isSavingGameType = true;
                                         });
                                         runMutation({
-                                          'name': _typeGameTitleController.text,
+                                          'type_name': _typeGameTitleController.text,
                                           'description':
                                               _typeGameDescriptionController.text,
-                                          'GameId': currGameId
+                                          'gameId': currGameId
                                         });
 
                                         _typeGameTitleController.clear();
@@ -274,7 +278,7 @@ class _AddGamePageState extends State<AddGamePage> {
                     },
                   )),
 
-              // Save a Post
+              // Save a Publisher
               Visibility(
                 visible: _visible,
                 child: Mutation(
@@ -296,13 +300,13 @@ class _AddGamePageState extends State<AddGamePage> {
                           TextFormField(
                             controller: _publisherController,
                             decoration: new InputDecoration(
-                                labelText: "Post Comment ",
+                                labelText: "Enter Publisher",
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide())),
                             validator: (v) {
                               if (v!.length == 0) {
-                                return "Post cannot be empty";
+                                return "Publisher cannot be empty";
                               } else {
                                 return null;
                               }
@@ -325,7 +329,9 @@ class _AddGamePageState extends State<AddGamePage> {
                                         _isSavingPublisher= true;
                                       });
                                       runMutation({
-                                        'comment': _publisherController.text,
+                                        'publisher_name': _publisherController.text,
+                                        'location' : _locationController.text,
+                                        'since': int.parse(_sinceController.text),
                                         'GameId': currGameId
                                       });
                                       //clear fields
@@ -380,10 +386,14 @@ class _AddGamePageState extends State<AddGamePage> {
 
 String insertPublisher() {
   return """
-    mutation CreatePost(\$comment: String!, \$userId: String!) {
-      CreatePost(comment: \$comment, userId: \$userId){
-         id
-         comment
+    mutation CreatePublisher(
+      \$publisher_name: String!,
+      \$location: String!,
+      \$since: Int!) {
+      CreatePublisher(publisher_name: \$publisher_name, location: \$location, since: \$since){
+        publisher_name
+        location
+        since 
       }   
     }
     """;
@@ -391,10 +401,12 @@ String insertPublisher() {
 
 String insertGame() {
   return """ 
-   mutation CreateUser(\$name: String!, \$age: Int!, \$profession: String!){
-     CreateUser(name: \$name, age: \$age, profession: \$profession) {
-         id
+   mutation CreateGame(\$name: String!, \$price: Int!, \$typeID: String!), \$publisherID: String!){
+     CreateGame(name: \$name, price: \$price, typeID: \$typeID, publisherID: \$publisherID) {
          name
+          price
+          typeID
+          publisherID
      }
 }
   """;
@@ -402,10 +414,11 @@ String insertGame() {
 
 String insertTypeGame() {
   return """
-    mutation CreateHobby(\$title: String!, \$description: String!, \$userId: String!) {
-      CreateHobby(title: \$title, description: \$description, userId: \$userId){
+    mutation CreateTypeGame(\$type_name: String!, \$description: String!) {
+      CreateTypeGame(type_name: \$type_name, description: \$description){
          id
-         title
+         type_name
+         description
       }   
     }
     """;

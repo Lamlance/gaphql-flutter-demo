@@ -2,7 +2,6 @@ const express = require("express");
 var { graphqlHTTP } = require("express-graphql");
 
 const schema = require("./server/schema/schema");
-const testSchema = require("./server/schema/types_schema");
 const mongoose = require("mongoose");
 
 const app = express();
