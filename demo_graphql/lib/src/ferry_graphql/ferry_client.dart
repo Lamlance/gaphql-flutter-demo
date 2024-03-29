@@ -32,4 +32,15 @@ class GamesClient {
       return listener(event.data!.games!.toList());
     });
   }
+
+  void createGame(String name,
+      {required void Function(GAddGameData_CreateGame?) listener}) {
+    _client
+        .request(GAddGameReq((b) => b
+          ..vars.name = name
+          ..vars.price = 10))
+        .listen((event) {
+      listener(event.data?.CreateGame);
+    });
+  }
 }

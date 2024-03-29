@@ -1,15 +1,44 @@
 //import 'dart:developer';
+import 'dart:developer';
+
+import 'package:demo_graphql/src/ferry_graphql/ferry_client.dart';
 import 'package:demo_graphql/src/games/games_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  final _client = GamesClient();
 
   @override
   State createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController _txtController = TextEditingController();
+  List<GGetAllGameData_games?> games = [];
+
+  void _showModalBottomScheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (ctx) {
+          return Column(
+            children: [
+              TextField(
+                controller: _txtController,
+              ),
+              TextButton(
+                  onPressed: () {
+                    widget._client.createGame(_txtController.text,
+                        listener: (data) {
+                      log(data == null ? "Create null" : "Create ${data.name}");
+                    });
+                  },
+                  child: const Text("Submit"))
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget content = GamesPage();
@@ -26,9 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: Center(child: content),
           floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              // final route = MaterialPageRoute(builder: (context) => AddGamePage());
-              // await Navigator.push(context, route);
+            onPressed: () {
+              _showModalBottomScheet(context);
             },
             backgroundColor: Colors.lightGreen,
             tooltip: 'Add',

@@ -1,8 +1,7 @@
 const express = require("express");
 var { graphqlHTTP } = require("express-graphql");
 
-const schema = require("./server/schema/schema");
-const testSchema = require("./server/schema/types_schema");
+const schema = require("./server/schema/schema.js");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -19,16 +18,15 @@ app.use(
 );
 
 mongoose
-.connect(
-    `mongodb+srv://${process.env.mongoUserName}:${process.env.mongoUserPassword}@graphqlcluster.vkaygmz.mongodb.net/${process.env.mongoDatabase}?retryWrites=true&w=majority&appName=GraphqlCluster
-`
-)
-.then(()=>{
-    app.listen({port: port}, ()=>{
-        console.log('Listening for requests on port' + port)
+  .connect(
+    `mongodb://MONGO_USER:MONGO_123@localhost:7000/demo_graphql?authSource=admin`
+  )
+  .then(() => {
+    app.listen({ port: port }, () => {
+      console.log("Listening for requests on port" + port);
     });
-})
-.catch((e) => {
+  })
+  .catch((e) => {
     console.log(process.env.mongoUserName);
     return console.log("Error:::" + e);
   });
